@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm有三种触发方式  硬件触发  软件触发  自由运行 二、连接网线，主要关注触发信号这块。引脚 分别对应六种颜色为    红色  绿色 白色 蓝色 棕色 黑色不确定这颜色是不是一一对齐的！！！  2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Balser相机">
+<meta property="og:url" content="http://example.com/2022/03/01/Balser/index.html">
+<meta property="og:site_name" content="君落羽">
+<meta property="og:description" content="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm有三种触发方式  硬件触发  软件触发  自由运行 二、连接网线，主要关注触发信号这块。引脚 分别对应六种颜色为    红色  绿色 白色 蓝色 棕色 黑色不确定这颜色是不是一一对齐的！！！  2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1e589c54c2834b05ac00918558b2a498.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1044d1be512242999b567e3417ef07d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c43e5c59c11648d29ff00fa84e7889a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5b91ec0d5c1243af9ff1f3550479e1d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3d6c891ba13445a29075856cbf13fd2b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/69e6e83f69ec4424b57f36628440a0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1ea318518c224988b2f1e8f7d2bb2fb0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_14,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-03-01T12:42:12.000Z">
+<meta property="article:modified_time" content="2022-03-01T12:42:45.578Z">
+<meta property="article:author" content="君落羽">
+<meta property="article:tag" content="FPGA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16">
+
+<link rel="canonical" href="http://example.com/2022/03/01/Balser/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Balser相机 | 君落羽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君落羽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/Balser/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Balser相机
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:42:12 / 修改时间：20:42:45" itemprop="dateCreated datePublished" datetime="2022-03-01T20:42:12+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm"><a href="#一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm" class="headerlink" title="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm"></a>一、下载<strong>Balser</strong>相机所需要的软件   <strong>pylon viewer</strong> 型号为<strong>acA2440-20gm</strong></h2><p>有三种触发方式  硬件触发  软件触发  自由运行<br><img src="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="二、连接网线，主要关注触发信号这块。"><a href="#二、连接网线，主要关注触发信号这块。" class="headerlink" title="二、连接网线，主要关注触发信号这块。"></a>二、连接网线，主要关注触发信号这块。</h2><p><strong>引脚</strong> 分别对应六种颜色为    <strong>红色  绿色 白色 蓝色 棕色 黑色</strong><br><font color=Red><strong>不确定这颜色是不是一一对齐的！！！</strong></font><br><img src="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12 -24VDC。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/1e589c54c2834b05ac00918558b2a498.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1044d1be512242999b567e3417ef07d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>Trigger Mode</strong>是触发模式选择<br><img src="https://img-blog.csdnimg.cn/c43e5c59c11648d29ff00fa84e7889a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5b91ec0d5c1243af9ff1f3550479e1d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可见，需要先选择对应的触发模式，再将Trigger Mode更改为ON。<br>（1）对于选择software的<strong>软件触发</strong>，Trigger Mode 为on便可以实现软件触发。<br>（2）对于选择的Line1 Line3的<strong>硬件触发</strong>， Trigger Mode 为on便可以实现硬件触发，还可以选择是上升沿触发还是下降沿触发。<br><img src="https://img-blog.csdnimg.cn/3d6c891ba13445a29075856cbf13fd2b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"><a href="#三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？" class="headerlink" title="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"></a>三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？</h2><h2 id="假设一"><a href="#假设一" class="headerlink" title="假设一"></a>假设一</h2><p><strong>input</strong><br>        相机的输入Line1接线上升沿: 数据线对应6根线，1和6已经接220V转12V电源的适配器，只需要接2绿线和5棕线。<br>        <img src="https://img-blog.csdnimg.cn/69e6e83f69ec4424b57f36628440a0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>output</strong><br>        （1）相机输出<strong>Line2接线</strong>：第四根线蓝线为相机输出，输出源有如下图几种选择，如果选择的是<strong>Exposure Active</strong>， 启用后当相机触发并曝光时会输出一个0V（对应白线），相机未触发为开路。<br>        （2）<strong>Exposure Active</strong>下，万用表一个接一个24V，一个接白线，只有15Hz，接24V和白线可以用PLC来监控&#x2F;确认相机收到Trigger信号（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zachary_hao/article/details/115653522%EF%BC%89">https://blog.csdn.net/zachary_hao/article/details/115653522）</a><br>        （3）当软件<strong>设置 Line2 为<font color=Red><strong>Frame Trigger Wait</strong></font><strong>， 相机的 output  便出现一个</strong>20Hz的曝光脉冲</strong>，但是这种情况也需要硬件触发的形式，如下图所示（<strong>帧触发等待信号</strong>）。<br>        <img src="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<table>
+<thead>
+<tr>
+<th>Exposure Active</th>
+<th>曝光开始时，该信号会变为高电平；曝光结束时，该信号会变为低电平。在滚动快门相机上，最后一行的曝光结束时，信号会变为低电平。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlashWindow</td>
+<td>您可以启动闪光灯时，该信号会变为高电平。当您应该停止闪光灯照明时，该信号会变为低电平</td>
+</tr>
+<tr>
+<td>FrameTriggerWait</td>
+<td>您可以使用相机的“触发等待”信号，例如帧触发等待，以优化触发图像采集并避免过度触发</td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/1ea318518c224988b2f1e8f7d2bb2fb0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_14,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="假设二"><a href="#假设二" class="headerlink" title="假设二"></a>假设二</h2><blockquote>
+<p>考不考虑使用<font color=Red>GPIO</font>来输出<br><img src="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</blockquote>
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><blockquote>
+<p>可能需要考虑：当打开Blaser的软件，设置外部触发时，单片机给的脉冲信号起到了作用（别忘了把触发模式设置位:lin1，且状态选择on）；但是相机对应的程序运行时，获得图像的topic并保存，发现还是软件触发，这是因为pylon_camera软件默认的就算软件触发；所以下一步改软件里面的程序，变成外部硬件触发模式</p>
+</blockquote>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><blockquote>
+<p>怎么连接FPGA呢？？？</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/hltt3838/article/details/109007872">https://blog.csdn.net/hltt3838/article/details/109007872</a><br>[2] <a target="_blank" rel="noopener" href="https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines">https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FPGA/" rel="tag"># FPGA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/DC/" rel="prev" title="DC工具的基本使用">
+      <i class="fa fa-chevron-left"></i> DC工具的基本使用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%8B%E8%BD%BDBalser%E7%9B%B8%E6%9C%BA%E6%89%80%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6-pylon-viewer-%E5%9E%8B%E5%8F%B7%E4%B8%BAacA2440-20gm"><span class="nav-number">1.</span> <span class="nav-text">一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BA%BF%EF%BC%8C%E4%B8%BB%E8%A6%81%E5%85%B3%E6%B3%A8%E8%A7%A6%E5%8F%91%E4%BF%A1%E5%8F%B7%E8%BF%99%E5%9D%97%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">二、连接网线，主要关注触发信号这块。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%98%BE%E7%84%B6%EF%BC%8C%E7%A1%AC%E4%BB%B6%E8%A7%A6%E5%8F%91%E4%B8%BB%E8%A6%81%E9%97%AE%E9%A2%98%E8%BF%98%E6%98%AF%E8%BF%9E%E7%BA%BF%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E9%82%A3%E4%B9%88%E9%97%AE%E9%A2%98%E6%9D%A5%E4%BA%86%EF%BC%8C%E6%80%8E%E4%B9%88%E6%A0%B7%E8%AE%A9%E7%9B%B8%E6%9C%BA%E6%8B%8D%E7%85%A7%E7%9A%84%E6%97%B6%E5%80%99%E7%BB%99%E4%B8%80%E4%B8%AA%E8%84%89%E5%86%B2%E4%BF%A1%E5%8F%B7%E7%BB%99%E5%A4%96%E9%9D%A2%E5%91%A2%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E4%B8%80"><span class="nav-number">4.</span> <span class="nav-text">假设一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E4%BA%8C"><span class="nav-number">5.</span> <span class="nav-text">假设二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%981"><span class="nav-number">6.</span> <span class="nav-text">问题1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%982"><span class="nav-number">7.</span> <span class="nav-text">问题2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">君落羽</p>
+  <div class="site-description" itemprop="description">君落羽的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君落羽</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

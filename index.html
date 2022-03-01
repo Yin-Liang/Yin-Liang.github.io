@@ -147,7 +147,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/a/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/Balser/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,7 +161,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/01/a/" class="post-title-link" itemprop="url">Ultra96V2开发板配置pynq以及dpu-pynq</a>
+            <a href="/2022/03/01/Balser/" class="post-title-link" itemprop="url">Balser相机</a>
         </h2>
 
         <div class="post-meta">
@@ -172,7 +172,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-01 20:17:22 / 修改时间：20:19:11" itemprop="dateCreated datePublished" datetime="2022-03-01T20:17:22+08:00">2022-03-01</time>
+              <time title="创建时间：2022-03-01 20:42:12 / 修改时间：20:42:45" itemprop="dateCreated datePublished" datetime="2022-03-01T20:42:12+08:00">2022-03-01</time>
             </span>
 
           
@@ -186,25 +186,507 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-准备物品"><a href="#1-准备物品" class="headerlink" title="1.准备物品"></a>1.准备物品</h2><p><strong>Ultra96V2</strong>开发板x1<br><img src="https://img-blog.csdnimg.cn/3de804bc19bb46049e4340c9f84e8da4.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>一根<strong>usb3.0A公对microB移动硬盘数据线</strong>x1<br><img src="https://img-blog.csdnimg.cn/7e818811829041d5889a1106bc92d063.png" alt="在这里插入图片描述"><br>32GB <strong>SD卡</strong>以及读卡器 x1<br>WiFi</p>
-<h2 id="2-烧写镜像"><a href="#2-烧写镜像" class="headerlink" title="2.烧写镜像"></a>2.烧写镜像</h2><p>点击<a target="_blank" rel="noopener" href="http://www.pynq.io/board.html">PYNQ网站</a>并下载对应的镜像文件，这里我下载的版本是V2.6。<br><img src="https://img-blog.csdnimg.cn/51c5ff51e8c841498522c91f2c28f1b0.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>烧写镜像需要使用工具，这里我使用的是<a target="_blank" rel="noopener" href="https://win32diskimager.org/">Win32 Disk Imager</a><br><img src="https://img-blog.csdnimg.cn/3babf6b5b518433ba1f40c5f35b8f3e7.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在将读卡器插入电脑后，可以<strong>先对SD卡进行一次格式化</strong>，然后打开上面的软件，依次选择对应的磁盘，对应的镜像，然后点击写入，烧录时间大概5到10分钟左右，烧录结束后取下读卡器，<strong>将SD卡插入到开发板中</strong>。</p>
-<h2 id="3-运行jupyter"><a href="#3-运行jupyter" class="headerlink" title="3.运行jupyter"></a>3.运行jupyter</h2><p>用microB线连接开发板以及电脑，插上开发板的电源，并按开发板的<strong>SW4按键</strong>打开开发板。接下里需要使用串口工具来连接开发板，串口工具比较多，我使用的是<a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">MobaXterm</a>。<br><img src="https://img-blog.csdnimg.cn/063814e5a0034c318e7c993e7aacdc03.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>按照图中所示配置一下串口，然后点开串口，出现下面的界面表示连接成功。<br><img src="https://img-blog.csdnimg.cn/a1a84b32fcc44f79928863421a968fc0.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这里我们可以先看一下网络</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/046b69660e9044ed826aa6d1fbaddf6c.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>用浏览器输入网址 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.3.1</span><br></pre></td></tr></table></figure>
-<p>即可以打开jupyter文件<br><img src="https://img-blog.csdnimg.cn/4aebbaf7df2f4970a5962933f7055a5e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="4-安装dpu-pynq"><a href="#4-安装dpu-pynq" class="headerlink" title="4.安装dpu-pynq"></a>4.安装dpu-pynq</h2><p>因为需要使用<strong>vitis-a</strong>i导出来的<strong>xmodel</strong>文件，这里配置了dpu-pynq来调用dpu。<br>首先保证你的开发板能够连接到网络，在<strong>jupyter的common&#x2F;wifi.ipynb</strong>中已经提供了网络连接的代码。SSID中输入wifi的名称，password中输入wifi的密码。<br><img src="https://img-blog.csdnimg.cn/4ef542259b524d69878c89c6085a57f7.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在<a target="_blank" rel="noopener" href="https://github.com/Xilinx/DPU-PYNQ">dpu-pynq</a>已经给出了具体的安装方法。<br>（1）在串口工具中输入<strong>su</strong>运行管理员权限，密码默认为<strong>xilinx</strong>。<br>（2）在窗口输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Xilinx/DPU-PYNQ.git</span><br><span class="line"><span class="built_in">cd</span> DPU-PYNQ/upgrade</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<p><em>Tips1</em>   如果网络不好的话，可以先下好这个文件，再直接通过文件夹导入jupyter中。<br>再文件夹中输入下面的地址，弹出的界面中用户和密码均为xilinx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.3.1\xilinx\jupyter_notebooks</span><br></pre></td></tr></table></figure>
-<p><em>Tips2</em>   如果一直make失败，你可以先同步一下linux的时间，再多make几次，但是仍然有可能失败，建议在网络比较好的时间段进行，如果网络是不能连接上github，那肯定会失败的，实际make的时间大约在40分钟到1小时。<br>（3）在窗口输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pynq-dpu</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$PYNQ_JUPYTER_NOTEBOOKS</span></span><br><span class="line">pynq get-notebooks pynq-dpu -p .</span><br></pre></td></tr></table></figure>
-<p>下面的指令会在jupyter中生成一个pynq-dpu文件，里面有一些使用dpu的工程示例文件。</p>
-<h2 id="5-MNIST手写数字识别示例"><a href="#5-MNIST手写数字识别示例" class="headerlink" title="5.MNIST手写数字识别示例"></a>5.MNIST手写数字识别示例</h2><p>打开<strong>dpu-pynq</strong>中的<strong>dpu_mnist_classifier</strong>文件，依次代码块运行，在实际运行时我在读取标签时一直报错，所以我先将对应的数据集下载下来，再进行处理。<br>这里参考的是  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37337494/article/details/102313480">本地加载mnist数据集的方法</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">load_mnist</span>():</span><br><span class="line">    </span><br><span class="line">    path = <span class="string">&#x27;mnist.npz&#x27;</span> <span class="comment">#放置mnist.py的目录。注意斜杠</span></span><br><span class="line">    f = np.load(path)</span><br><span class="line">    x_train, y_train = f[<span class="string">&#x27;x_train&#x27;</span>], f[<span class="string">&#x27;y_train&#x27;</span>]</span><br><span class="line">    x_test, y_test = f[<span class="string">&#x27;x_test&#x27;</span>], f[<span class="string">&#x27;y_test&#x27;</span>]</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">return</span> (x_train, y_train), (x_test, y_test)</span><br><span class="line"> </span><br><span class="line">(train_data,train_label),(test_data,test_label) = load_mnist()</span><br><span class="line"></span><br><span class="line">normalized_data = np.asarray(test_data/<span class="number">255</span>, dtype=np.float32)</span><br><span class="line">test_data = np.expand_dims(normalized_data, axis=<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(test_data.shape)</span><br><span class="line"><span class="built_in">print</span>(test_label.shape)</span><br></pre></td></tr></table></figure>
-<p>最后的结果如下图所示<br><img src="https://img-blog.csdnimg.cn/03c5dd4416474631b6dab39da06fdca6.png" alt="在这里插入图片描述"><br>到这里为止，我们配置好了pynq以及dpu-pynq，实际上新版本dpu-pynq不再支持以前的模型格式，只能使用<strong>xmodel文件</strong>。</p>
+          <h2 id="一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm"><a href="#一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm" class="headerlink" title="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm"></a>一、下载<strong>Balser</strong>相机所需要的软件   <strong>pylon viewer</strong> 型号为<strong>acA2440-20gm</strong></h2><p>有三种触发方式  硬件触发  软件触发  自由运行<br><img src="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="二、连接网线，主要关注触发信号这块。"><a href="#二、连接网线，主要关注触发信号这块。" class="headerlink" title="二、连接网线，主要关注触发信号这块。"></a>二、连接网线，主要关注触发信号这块。</h2><p><strong>引脚</strong> 分别对应六种颜色为    <strong>红色  绿色 白色 蓝色 棕色 黑色</strong><br><font color=Red><strong>不确定这颜色是不是一一对齐的！！！</strong></font><br><img src="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12 -24VDC。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/1e589c54c2834b05ac00918558b2a498.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1044d1be512242999b567e3417ef07d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>Trigger Mode</strong>是触发模式选择<br><img src="https://img-blog.csdnimg.cn/c43e5c59c11648d29ff00fa84e7889a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5b91ec0d5c1243af9ff1f3550479e1d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可见，需要先选择对应的触发模式，再将Trigger Mode更改为ON。<br>（1）对于选择software的<strong>软件触发</strong>，Trigger Mode 为on便可以实现软件触发。<br>（2）对于选择的Line1 Line3的<strong>硬件触发</strong>， Trigger Mode 为on便可以实现硬件触发，还可以选择是上升沿触发还是下降沿触发。<br><img src="https://img-blog.csdnimg.cn/3d6c891ba13445a29075856cbf13fd2b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"><a href="#三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？" class="headerlink" title="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"></a>三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？</h2><h2 id="假设一"><a href="#假设一" class="headerlink" title="假设一"></a>假设一</h2><p><strong>input</strong><br>        相机的输入Line1接线上升沿: 数据线对应6根线，1和6已经接220V转12V电源的适配器，只需要接2绿线和5棕线。<br>        <img src="https://img-blog.csdnimg.cn/69e6e83f69ec4424b57f36628440a0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>output</strong><br>        （1）相机输出<strong>Line2接线</strong>：第四根线蓝线为相机输出，输出源有如下图几种选择，如果选择的是<strong>Exposure Active</strong>， 启用后当相机触发并曝光时会输出一个0V（对应白线），相机未触发为开路。<br>        （2）<strong>Exposure Active</strong>下，万用表一个接一个24V，一个接白线，只有15Hz，接24V和白线可以用PLC来监控&#x2F;确认相机收到Trigger信号（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zachary_hao/article/details/115653522%EF%BC%89">https://blog.csdn.net/zachary_hao/article/details/115653522）</a><br>        （3）当软件<strong>设置 Line2 为<font color=Red><strong>Frame Trigger Wait</strong></font><strong>， 相机的 output  便出现一个</strong>20Hz的曝光脉冲</strong>，但是这种情况也需要硬件触发的形式，如下图所示（<strong>帧触发等待信号</strong>）。<br>        <img src="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<table>
+<thead>
+<tr>
+<th>Exposure Active</th>
+<th>曝光开始时，该信号会变为高电平；曝光结束时，该信号会变为低电平。在滚动快门相机上，最后一行的曝光结束时，信号会变为低电平。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FlashWindow</td>
+<td>您可以启动闪光灯时，该信号会变为高电平。当您应该停止闪光灯照明时，该信号会变为低电平</td>
+</tr>
+<tr>
+<td>FrameTriggerWait</td>
+<td>您可以使用相机的“触发等待”信号，例如帧触发等待，以优化触发图像采集并避免过度触发</td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/1ea318518c224988b2f1e8f7d2bb2fb0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_14,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="假设二"><a href="#假设二" class="headerlink" title="假设二"></a>假设二</h2><blockquote>
+<p>考不考虑使用<font color=Red>GPIO</font>来输出<br><img src="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</blockquote>
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><blockquote>
+<p>可能需要考虑：当打开Blaser的软件，设置外部触发时，单片机给的脉冲信号起到了作用（别忘了把触发模式设置位:lin1，且状态选择on）；但是相机对应的程序运行时，获得图像的topic并保存，发现还是软件触发，这是因为pylon_camera软件默认的就算软件触发；所以下一步改软件里面的程序，变成外部硬件触发模式</p>
+</blockquote>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><blockquote>
+<p>怎么连接FPGA呢？？？</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/hltt3838/article/details/109007872">https://blog.csdn.net/hltt3838/article/details/109007872</a><br>[2] <a target="_blank" rel="noopener" href="https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines">https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines</a></p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/DC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/DC/" class="post-title-link" itemprop="url">DC工具的基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:40:18 / 修改时间：20:40:50" itemprop="dateCreated datePublished" datetime="2022-03-01T20:40:18+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 本文主要参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/w1152715961/article/details/113927697">DC WorkShop Lab2_w1152715961的博客-CSDN博客</a></p>
+<p>​    一直以来，我都是把代码直接扔到vivado里面，从来没有考虑过它的实际综合的过程是怎么实现，这周有时间来研究一下design compiler工具的使用。</p>
+<h1 id="（一）原理"><a href="#（一）原理" class="headerlink" title="（一）原理"></a>（一）原理</h1><p>​    逻辑综合工具实际上就是将RTL代码映射到具体的工艺库上（一般由制造厂家提供），再通过添加约束信息（时序约束，线载模型，面积，功耗等，主要以tcl语言形式）,对RTL代码进行逻辑综合，形成门级网表（netlists）。</p>
+<p>​    一般先将VHDL&#x2F;Verilog&#x2F;Systemverilog转化为GTECH网表（中间网表），再映射到不同的工艺库上，生成TSMC网表。</p>
+<p>​    Synthesis &#x3D; Translation + Gate Mapping + Loigic Optimization</p>
+<p><img src="https://img-blog.csdnimg.cn/e554c187b28644f3aa41edcacec02d33.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h1 id="（二）一些路径的设置"><a href="#（二）一些路径的设置" class="headerlink" title="（二）一些路径的设置"></a>（二）一些路径的设置</h1><p>下面这张图片引用来自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/129059203">知乎</a></p>
+<p><img src="https://img-blog.csdnimg.cn/9777edcdf7604a1c9af415cbe73c6983.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><strong>Target_library</strong>: 由半导体厂商提供，包含工艺技术参数和单元的功能，DC使用库里的单元构成电路。工艺库一般是.dbDE 的格式，这种格式是DC认识的一种内部文件格式；<br> <strong>Link_library</strong>: 设置模块或者单元电路的引用，对于所有DC可能用到的库，都需要在Link_library中进行指定，包括要使用到的IP文件。此处还要将search_path添加进来，这样才能找到.db文件；<br> <strong>Symbol_library</strong>: 包含工艺库中的单元图形表示的库名称；<br> <strong>Search_Path</strong>: 包括所有必需文件的指定路径都需要在此进行声明。</p>
+<p><strong>其中lib文件可以打开，工程师可以看懂。</strong></p>
+<h1 id="（三）DC工具的四种打开方式"><a href="#（三）DC工具的四种打开方式" class="headerlink" title="（三）DC工具的四种打开方式"></a><strong>（三）DC工具的四种打开方式</strong></h1><p><img src="https://img-blog.csdnimg.cn/d2bc313365a74ee3a6323d203724bcf5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<table>
+<thead>
+<tr>
+<th><strong>dcsh mode</strong></th>
+<th><strong>dc_shell</strong></th>
+<th><strong>支持调用dcsh脚本，不支持tcl，仅支持文本界面，没有图形界面</strong></th>
+<th><strong>可以通过dc_shell -f script方式来调用脚本</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>design_analyzer</strong></td>
+<td><strong>对应的dc_shell格式的图形化界面，故不能调用tcl脚本</strong></td>
+<td><strong>会产生command.log以及view_command.log来记录执行命令以及参数，会在运行中产生临时的filenames.log用于记录访问的目录，退出会自动删除。</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>tcl mode</strong></td>
+<td><strong>dc_shell -t</strong></td>
+<td><strong>dc_shell的扩展，支持tcl脚本</strong></td>
+<td><strong>可以通过dc_shell-t -f script方式来调用脚本</strong></td>
+</tr>
+<tr>
+<td><strong>design_vision</strong></td>
+<td><strong>对应的dc_shell-t格式的图形化界面，故能调用tcl脚本</strong></td>
+<td><strong>只会产生command.log的日志文件</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>   其中dcsh不能调用tcl，tcl也不能调用dcsh。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行tcl脚本</span></span><br><span class="line">source my.tcl</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl</span></span><br><span class="line">dc_shell-t -f  my.tcl</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl，并将输出定向到对应的log文件中</span></span><br><span class="line">dc_shell-t -f  my.tcl  &gt; my.log</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl，并将输出定向到对应的log文件中,并且在linux屏幕中输出</span></span><br><span class="line">dc_shell-t -f  my.tcl  | tee my.log</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h1 id="（四）lab2-2007-03"><a href="#（四）lab2-2007-03" class="headerlink" title="（四）lab2 2007.03"></a><strong>（四）lab2 2007.03</strong></h1><p>​    本来想跑通一个2012.06的lab1，但是因为找到的文件缺失一些东西，最后还是决定使用2007.3的lab来跑一遍试试看。这个lab的文件可以在****<a target="_blank" rel="noopener" href="http://bbs.eetop.cn/forum.php?mod=viewthread&tid=245339&highlight=DC+WorkShop">EETOP</a>****上面找到，包括了实验文件以及对应的手册，还是写的非常详细的。</p>
+<p>​    <strong>准备工作</strong>：安装<strong>DC2016版本</strong>的虚拟机，<strong>lab2</strong>的文件，<strong>DC1_200703_LG_02_setup.doc</strong>对应的手册。</p>
+<h3 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h3><blockquote>
+<p>​    flow的第一个工作是将不完整的**.synopsys_dc.setup<strong>文件补齐。</strong>.synopsys_dc.setup<strong>它本身是一个隐藏文件，需要用</strong>ls -la<strong>来查看，之后去修改它对应的路径设置，包括search_path、target_library、link_library、symbol_library。我们先不关心这个</strong>.synopsys_dc.setup**自己去写应该怎么写。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/6eab21b8b76044379eaac835403c98b2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<blockquote>
+<p>在<strong>link_library</strong>的设置中必须包含<strong>’*’,</strong> 表示<strong>DC在引用实例化模块或者单元电路时首先搜索已经调进DC memory的模块和单元电路，如果在link library中不包含’*’，DC就不会使用DC memory中已有的模块</strong>，因此，会出现无法匹配的模块或单元电路的警告信息(unresolved design reference)。</p>
+</blockquote>
+<h3 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h3><blockquote>
+<p>   输入design_vision打开DC界面，并查看File-&gt;setup,观察路径是否正确。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/18865ed9fd5a4b22b2ac840e2f5f7234.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//tcl查看对应的路径</span><br><span class="line">printvar target_library</span><br><span class="line">printvar link_library</span><br><span class="line">printvar symbol_library</span><br><span class="line">printvar search_path</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h3><blockquote>
+<p>   在File-&gt;read中选择TOP.vhd,选中top右下角会出现top字样。点击红色的1可以查看对应的schematic。 </p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/a805aedeae9e4a12a93e4b0bc39dff0e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<blockquote>
+<p>  在 File-&gt;Link Design 中点击ok</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b9205faf657d41e3b4a4ec6da61964bf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//Save the unmapped design in ddc fromat，将没有映射的网表文件以ddc格式保存起来</span><br><span class="line">write –hier –f ddc –out unmapped/TOP.ddc</span><br><span class="line">//see a list of designs and libraries in memory，可以看到对应的design和lib清单</span><br><span class="line">list_designs</span><br><span class="line">list_libs</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h3><blockquote>
+<p>  **source TOP.con,**这实际上就是一个约束文件。下面是TOP.con文件内容，包括了时钟约束以及线载模型的约束过程。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> lib_name cb13fs120_tsmc_max</span><br><span class="line">current_design TOP</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reset all constraints </span></span><br><span class="line">reset_design</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create clock object and set uncertainty</span></span><br><span class="line">create_clock -period 2 [get_ports Clk]</span><br><span class="line">set_clock_uncertainty 0.2 [get_clocks Clk]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set constraints on input ports</span></span><br><span class="line">suppress_message UID-401</span><br><span class="line">set_driving_cell -library <span class="variable">$lib_name</span> -lib_cell sdcfq1 [remove_from_collection [all_inputs] [get_ports Clk]]</span><br><span class="line">set_input_delay 0.1 -max -clock Clk [remove_from_collection [all_inputs] [get_ports Clk]]</span><br><span class="line">set_input_delay 1.2 -max -clock Clk [get_ports Neg_Flag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set constraints on output ports</span></span><br><span class="line">set_output_delay 1 -max -clock Clk [all_outputs]</span><br><span class="line">set_load [<span class="built_in">expr</span> [load_of <span class="variable">$lib_name</span>/an02d0/A1] * 15] [all_outputs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the wire load model </span></span><br><span class="line">set_wire_load_mode top</span><br><span class="line">set_wire_load_model -name 16000</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h3><blockquote>
+<p>  <strong>compile 编译</strong></p>
+<p>  <strong>ultra 超级编译</strong></p>
+<p>执行编译的过程中有三个层次的优化过程：</p>
+<p>（1）架构的优化（插入bufio）</p>
+<p>（2）逻辑的优化&#x2F;GTECH网表的优化（卡诺图的优化）</p>
+<p>（3）门级优化</p>
+<p><strong>在满足时序约束的条件下，保证面积的最小。</strong></p>
+<p>gate clock 可以用来控制功耗</p>
+<p>incremental mappping 增量映射，原理图之间可以进行跳转的过程。</p>
+<p>auto ungroup 把模块打散掉</p>
+</blockquote>
+<p> <img src="https://img-blog.csdnimg.cn/c5490f6c24674a768af89303351ea470.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task6"><a href="#Task6" class="headerlink" title="Task6"></a>Task6</h3><blockquote>
+<p>  <strong>查看所有违例</strong>     report_constraint -all_violators</p>
+<p>  <strong>查看各种报告</strong>  </p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/bcf08cd407e14213a4fad46fd46eaf48.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h3><blockquote>
+<p>  保存文件到 mapped中，仍然以ddc的格式来进行保存文件。</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b95b55202c784ae1bc3352c3169cc740.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">   </p>
+<blockquote>
+<p>​    保存tcl脚本，先点击history，再鼠标全部选中，然后点击save contents as，将tcl脚本保存下来。<strong>之后可以通过 design_vision –f scripts&#x2F;run_history.tcl 直接一键执行全部dc过程。</strong></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/d64a4499c54f4acb9555da4f1c0e4810.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Task8"><a href="#Task8" class="headerlink" title="Task8"></a>Task8</h3><blockquote>
+<p>  <strong>remove_design -designs</strong> 退出所有设计，然后exit退出。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/KV260/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/KV260/" class="post-title-link" itemprop="url">KV260相机例程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:39:11 / 修改时间：20:40:01" itemprop="dateCreated datePublished" datetime="2022-03-01T20:39:11+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>KV260板卡支持vitis-ai，板卡本身有很多丰富的例程。</p>
+<h1 id="一、镜像文件"><a href="#一、镜像文件" class="headerlink" title="一、镜像文件"></a>一、镜像文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.xilinx.com/member/forms/download/xef.html?filename=petalinux-sdimage-2021.1-update1.wic.xz</span><br></pre></td></tr></table></figure>
+<p>首先在网站上下载镜像，根据<a target="_blank" rel="noopener" href="https://xilinx.github.io/kria-apps-docs/main/build/html/docs/smartcamera/docs/app_deployment.html">官方的流程</a>来，先用Balena Etcher tool 进行SD卡烧录。<br><img src="https://img-blog.csdnimg.cn/db776049c51f435696d8f4fdd92ce312.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="二、连线"><a href="#二、连线" class="headerlink" title="二、连线"></a>二、连线</h1><h2 id="1-连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。"><a href="#1-连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。" class="headerlink" title="1.连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。"></a>1.连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。</h2><pre><code>板卡没有开关，插入电源线即启动（注意插入SD卡），最好不要在通电情况下连接HDMI线。
+如果没有路由器，可以用电脑的网口，首先在网络配置时候选择电脑的wlan共享以太网，然后在板卡中设置ip。
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig eth0 192.168.137.3 broadcast 0.0.0.0 netmask 255.255.255.0 up</span><br><span class="line">sudo route add default gw 192.168.137.1</span><br></pre></td></tr></table></figure>
+<p>建议还是用路由器……</p>
+<h2 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h2><p>用MobalXterm连接串口，板卡本身连接后有两个COM口，选择小的COM口，调整波特率为115200.</p>
+<p>开始输入用户petalinux，并输入自己设定的密码。</p>
+<p>先给予root权限</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su -l root</span><br></pre></td></tr></table></figure>
+<p>输入<code>ifconfig</code> 查看网址，之后可以不再使用usb线，直接用<br><code>ssh petalinux@[ip]</code>来连接板卡。</p>
+<h2 id="3-跑相机例程"><a href="#3-跑相机例程" class="headerlink" title="3.跑相机例程"></a>3.跑相机例程</h2><p>更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf update</span><br><span class="line">sudo dnf clean all</span><br></pre></td></tr></table></figure>
+<p>查看有哪些例程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil getpkgs</span><br></pre></td></tr></table></figure>
+<p>安装smartcam例程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install packagegroup-kv260-smartcam.noarch</span><br></pre></td></tr></table></figure>
+<p>查看哪些程序在运行，一般都有一个kv260-dp在跑</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil      listapps</span><br></pre></td></tr></table></figure>
+<p>先用unloadapp把kv260-dp关掉，再运行smartcam程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil      unloadapp</span><br><span class="line">sudo xmutil      loadapp kv260-smartcam</span><br></pre></td></tr></table></figure>
+<p>如果使用的是送的mipi摄像头，但是显示器本身必须达到相应的像素要求才能运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smartcam --mipi -W 1920 -H 1080 -r 30 --target dp</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/4471d30b63f84f84a8bb12b4ca77e9cd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="4-结果"><a href="#4-结果" class="headerlink" title="4.结果"></a>4.结果</h2><p><img src="https://img-blog.csdnimg.cn/55e6ac4825cc4e0e989fc6fe3d7ba6e5.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>……<strong>没有红色外壳立不起来</strong></p>
+<h1 id="三、jupyter"><a href="#三、jupyter" class="headerlink" title="三、jupyter"></a>三、jupyter</h1><p>如果板卡启动是已经连接以太网，那么启动时会默认打开一个jupyter，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter-server list</span><br></pre></td></tr></table></figure>
+
+<p>获得当前正在运行的jupyter程序，然后复制链接直接在浏览器打开即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">FPGA时序分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:38:11 / 修改时间：20:38:45" itemprop="dateCreated datePublished" datetime="2022-03-01T20:38:11+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 本文主要参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/4579169">猫叔的时序分析</a>，在看了大佬的博客后，我总结了下面的PPT。</p>
+<p><img src="https://img-blog.csdnimg.cn/22a94233ce16437bbf598eee98063cea.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/5f2c2a7c1d9e427892ff1344e8ad4cd0.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/854983b51259478d97b702f2e59e8bf3.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/a771becd82b04fb584471940aa361088.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/06eeb647b67149539bca7e764e9484eb.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/ab8108f5c9614f3a8618b1be35af467c.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/07a280f74b3a42b7b26773c5cef07174.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/84a614acbc0a4487adb85793d5d537d8.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/fbb00f3a39ea4bd19147af5adf3aa6a4.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/a20b91d9b7e4403e9c84147127aa3b19.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/6bc156c0e21441cb8031a741ed6c2bcd.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/VCS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/VCS/" class="post-title-link" itemprop="url">VCS的基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:37:09 / 修改时间：20:37:51" itemprop="dateCreated datePublished" datetime="2022-03-01T20:37:09+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>VCS</strong>是在linux下面用来进行仿真看波形的工具，类似于windows下面的modelsim以及questasim等工具，以及quartus、vivado仿真的操作。</p>
+<h2 id="1-vcs的基本指令"><a href="#1-vcs的基本指令" class="headerlink" title="1.vcs的基本指令"></a>1.vcs的基本指令</h2><p><strong>vcs的常见指令后缀</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-l readme.log</code></td>
+<td>用于将编译产生的信息放在log文件内</td>
+</tr>
+<tr>
+<td><code>+v2k</code></td>
+<td>是使VCS兼容verilog 2001以前的标准</td>
+</tr>
+<tr>
+<td><code>-debug_all</code></td>
+<td>用于产生debug所需的文件</td>
+</tr>
+<tr>
+<td><code>-f  verilog_file.f   </code></td>
+<td>可将.f文件里的源码全部编译</td>
+</tr>
+<tr>
+<td><code>-R</code></td>
+<td>编译后立即运行，即编译完成后立即执行 <strong>.&#x2F;simv</strong></td>
+</tr>
+<tr>
+<td><code>-Mupdate</code></td>
+<td>源文件有修改时，只重新编译有改动的**.v**文件，节约编译时间。</td>
+</tr>
+<tr>
+<td><code>-sverilog</code></td>
+<td>打开对<strong>Systemverilog</strong>的支持，编译<strong>Systemverilog</strong>文件时使用。</td>
+</tr>
+<tr>
+<td><code>-timescale=1ns/1ns</code></td>
+<td>设置仿真精度</td>
+</tr>
+<tr>
+<td><code>-o simv_file</code></td>
+<td>编译默认产生的可执行文件为<strong>simv</strong>，可以使用 <strong>-o</strong> 更改可执行文件名。如果这里修改执行仿真时候就不是使用<strong>simv</strong>而是对应的o名字了。</td>
+</tr>
+<tr>
+<td><strong>simv的常见指令</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>指令</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>——————-</td>
+<td>——————</td>
+</tr>
+<tr>
+<td><code>./simv -l run.log</code></td>
+<td>执行的日志文件保存</td>
+</tr>
+<tr>
+<td><code>./simv -gui</code></td>
+<td>以图形化界面打开</td>
+</tr>
+</tbody></table>
+<h2 id="2-使用vcs的实例"><a href="#2-使用vcs的实例" class="headerlink" title="2.使用vcs的实例"></a>2.使用vcs的实例</h2><p>采用的是<strong>全加器的官方教程</strong>，首先介绍不使用脚本的执行过程。<br>（1）先执行<code>vcs</code>加入对应的<code>full_adder</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcs -sverilog  -debug_all   -timescale=1ns/1ps  full_adder.v  full_adder_tb.v -l com.log</span><br></pre></td></tr></table></figure>
+<p>这里先写<strong>full_adder.v</strong> 是因为<strong>tb</strong>文件需要调用它，所以把被调用的文件先写出来，这条语句会生成simv文件（如果使用了<code>-o simv_file</code>会生成对应的文件名字）。<br>（2）可以用<code>./simv</code>文件执行波形的界面，也可以采用下面指令以后台方式打开一个界面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dve  &amp;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">./simv -l run.log -gui</span><br></pre></td></tr></table></figure>
+<p>（3）如果以<code>./simv</code>执行会直接看到波形文件，如果使用<code>dve &amp;</code> 需要自行加入<code>simv</code>文件来查看波形，选中<strong>simulator-&gt;Setup</strong>,加入生成的<strong>simv</strong>文件。<br><img src="https://img-blog.csdnimg.cn/e8cc3841c31f473694ebfe378510b157.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>在下方<strong>run all</strong>，如果没有给时间刻度这里会报错。没有报错，则说明我们的功能是完全正确无误的。右键加入波形文件，按<strong>f</strong>键显示波形。<br>（4）如下的四个按键作用<br>第一个：  追踪谁驱动该信号     <strong>ctrl+d</strong><br>第二个：   追踪信号的值变换  <strong>ctrl+shift+d</strong><br>第三个：   追踪未知态<br>第四个：   追踪用于驱动谁<br><img src="https://img-blog.csdnimg.cn/adf5e968cd0b4961a7bbffea398e2b4a.png" alt="在这里插入图片描述"></p>
+<h2 id="3-makefile文件的写法"><a href="#3-makefile文件的写法" class="headerlink" title="3.makefile文件的写法"></a>3.makefile文件的写法</h2><p>vcs的脚本写法可以帮助快递进行仿真得到波形文件。<br>其中.PHONY可以指定对应哪些关键词进行make操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.PHONY:vcs sim dve clean </span><br><span class="line"></span><br><span class="line">OUTPUT = adder</span><br><span class="line"></span><br><span class="line">VCS = vcs -sverilog +v2k -timescale=1ns/1ns                             \</span><br><span class="line">          -debug_all                                                    \</span><br><span class="line">          -o <span class="variable">$&#123;OUTPUT&#125;</span>                                                  \</span><br><span class="line">          -l compile.log                                                \</span><br><span class="line">SIM = ./<span class="variable">$&#123;OUTPUT&#125;</span> -l run.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vcs:</span><br><span class="line">        <span class="variable">$&#123;VCS&#125;</span> -f verilog_file.f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sim:</span><br><span class="line">        <span class="variable">$&#123;SIM&#125;</span></span><br><span class="line"></span><br><span class="line">dve:</span><br><span class="line">		dve -vpd    vcdplus.vpd &amp;  </span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">       <span class="built_in">rm</span> -rf *.<span class="built_in">log</span>  csrc  simv*  *.key *.vpd  DVEfiles coverage *.vdb</span><br></pre></td></tr></table></figure>
+<p>这样 make vcs执行vcs语句，make sim执行simv语句，make dve打开波形文件，make clean清除一些冗余文件。<br>其中，verilog_file.f是文件的列表，可以采用下面语句生成，这样将所有以v结尾的文件名写到目标文件中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  -name  <span class="string">&quot;.*v&quot;</span>   &gt; file.list</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -221,6 +703,9 @@
 
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -285,12 +770,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

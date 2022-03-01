@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.PL侧的闪灯本文参考ZCU106开发之PL侧闪灯 (1)首先打开vivado建立一个project：PL_LED(2)在project中创建一个设计文件：PL_LED.v具体代码如下,我使用的是vivado的2019.1版本: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zcu106-PL+PS">
+<meta property="og:url" content="http://example.com/2022/03/01/ZCU106_PL_PS/index.html">
+<meta property="og:site_name" content="君落羽">
+<meta property="og:description" content="1.PL侧的闪灯本文参考ZCU106开发之PL侧闪灯 (1)首先打开vivado建立一个project：PL_LED(2)在project中创建一个设计文件：PL_LED.v具体代码如下,我使用的是vivado的2019.1版本: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210315200223876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327192659333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327192851512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327193216481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327194314581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021032720002864.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021032720090547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-03-01T12:35:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T12:36:42.643Z">
+<meta property="article:author" content="君落羽">
+<meta property="article:tag" content="FPGA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210315200223876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="http://example.com/2022/03/01/ZCU106_PL_PS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>zcu106-PL+PS | 君落羽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">君落羽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/ZCU106_PL_PS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          zcu106-PL+PS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:35:00 / 修改时间：20:36:42" itemprop="dateCreated datePublished" datetime="2022-03-01T20:35:00+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-PL侧的闪灯"><a href="#1-PL侧的闪灯" class="headerlink" title="1.PL侧的闪灯"></a>1.PL侧的闪灯</h1><p>本文参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/lixiaolin126/article/details/83956855">ZCU106开发之PL侧闪灯</a></p>
+<h1 id="1-首先打开vivado建立一个project：PL-LED"><a href="#1-首先打开vivado建立一个project：PL-LED" class="headerlink" title="(1)首先打开vivado建立一个project：PL_LED"></a>(1)首先打开vivado建立一个project：PL_LED</h1><h1 id="2-在project中创建一个设计文件：PL-LED-v"><a href="#2-在project中创建一个设计文件：PL-LED-v" class="headerlink" title="(2)在project中创建一个设计文件：PL_LED.v"></a>(2)在project中创建一个设计文件：PL_LED.v</h1><p>具体代码如下,我使用的是vivado的2019.1版本:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.PL端led闪灯实验</span></span><br><span class="line"><span class="comment">//zcu06</span></span><br><span class="line"><span class="comment">//2021年3月15日</span></span><br><span class="line"><span class="function"><span class="keyword">module</span> <span class="title">PL_LED</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        input clk_125_p_i,</span></span></span><br><span class="line"><span class="params"><span class="function">        input clk_125_n_i,</span></span></span><br><span class="line"><span class="params"><span class="function">        output reg led_0</span></span></span><br><span class="line"><span class="params"><span class="function"></span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    parameter HALF_LED_PERIOD =  <span class="number">32&#x27;</span>d25_000_000;</span><br><span class="line">    reg[<span class="number">31</span>:<span class="number">0</span>] div_counter;   <span class="comment">//分频计数器</span></span><br><span class="line"></span><br><span class="line">    wire clk_50M;</span><br><span class="line">    wire rst;</span><br><span class="line">    wire locked;</span><br><span class="line"></span><br><span class="line">    <span class="function">clk_wiz_0 <span class="title">clk_wiz_0</span></span></span><br><span class="line"><span class="function">    <span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        .clk_out1(clk_50M),</span></span></span><br><span class="line"><span class="params"><span class="function">        .reset(<span class="number">1&#x27;b</span>0),</span></span></span><br><span class="line"><span class="params"><span class="function">        .locked(locked),</span></span></span><br><span class="line"><span class="params"><span class="function">        .clk_in1_p(clk_125_p_i),</span></span></span><br><span class="line"><span class="params"><span class="function">        .clk_in1_n(clk_125_n_i)</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>;</span><br><span class="line"></span><br><span class="line">    assign rst = !locked;</span><br><span class="line">    always @(posedge clk_50M) <span class="function">begin</span></span><br><span class="line"><span class="function">        <span class="title">if</span><span class="params">(rst)</span></span></span><br><span class="line"><span class="function">            begin</span></span><br><span class="line"><span class="function">                led_0&lt;</span>=<span class="number">1&#x27;b</span>0;</span><br><span class="line">                div_counter&lt;=<span class="number">32&#x27;</span>d0;</span><br><span class="line">            <span class="function">end</span></span><br><span class="line"><span class="function">        <span class="keyword">else</span></span></span><br><span class="line"><span class="function">            begin</span></span><br><span class="line"><span class="function">                <span class="title">if</span><span class="params">(div_counter==HALF_LED_PERIOD)</span></span></span><br><span class="line"><span class="function">                    begin</span></span><br><span class="line"><span class="function">                    led_0&lt;</span>=!led_0;</span><br><span class="line">                    div_counter&lt;=<span class="number">32&#x27;</span>d0;</span><br><span class="line">                    end</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    begin</span><br><span class="line">                        led_0&lt;=led_0;</span><br><span class="line">                        div_counter&lt;=div_counter+<span class="number">32&#x27;</span>d1;</span><br><span class="line">                    end</span><br><span class="line">            end</span><br><span class="line">    end </span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+<h1 id="3-增加约束文件PL-LED-xdc"><a href="#3-增加约束文件PL-LED-xdc" class="headerlink" title="(3)增加约束文件PL_LED.xdc"></a>(3)增加约束文件PL_LED.xdc</h1><p>这里用H9和G9连接调用的ip核，将led接到AL11上。<br><img src="https://img-blog.csdnimg.cn/20210315200223876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set_property PACKAGE_PIN H9 [get_ports clk_125_p_i]</span><br><span class="line">set_property IOSTANDARD LVDS [get_ports clk_125_p_i]</span><br><span class="line">set_property PACKAGE_PIN G9 [get_ports clk_125_n_i]</span><br><span class="line">set_property IOSTANDARD LVDS [get_ports clk_125_n_i]</span><br><span class="line">set_property PACKAGE_PIN AL11 [get_ports led_0]</span><br><span class="line">set_property IOSTANDARD LVCMOS12 [get_ports led_0]</span><br></pre></td></tr></table></figure>
+<h1 id="4）连接jtag下载线，并将下载模式设置为jtag模式"><a href="#4）连接jtag下载线，并将下载模式设置为jtag模式" class="headerlink" title="(4）连接jtag下载线，并将下载模式设置为jtag模式"></a>(4）连接jtag下载线，并将下载模式设置为jtag模式</h1><p>将板子上sw6的四个开关全部按到on端（<strong>0000</strong>）jtag，在vivado里面打开设备，并将生成的bit文件导入，pl侧最右边的一个led灯闪烁亮了。</p>
+<h1 id="2-PS侧MIO闪灯"><a href="#2-PS侧MIO闪灯" class="headerlink" title="2.PS侧MIO闪灯"></a>2.PS侧MIO闪灯</h1><p>本文参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/lixiaolin126/article/details/83957270">ZCU106开发之PS侧MIO闪灯</a><br>要使用PS侧点亮MIO闪灯，需要使用zynq的SDK模块以及MIO模块，这里可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11j411f7Co/?spm_id_from=333.788.recommend_more_video.1">正点原子SDK开发部分</a>。</p>
+<h1 id="1-首先打开vivado建立一个project：PS-MIO-LED"><a href="#1-首先打开vivado建立一个project：PS-MIO-LED" class="headerlink" title="(1)首先打开vivado建立一个project：PS_MIO_LED"></a>(1)首先打开vivado建立一个project：PS_MIO_LED</h1><h1 id="2-在IP-INTEGRATOR中点击Create-Block-Design创建一个IP"><a href="#2-在IP-INTEGRATOR中点击Create-Block-Design创建一个IP" class="headerlink" title="(2)在IP INTEGRATOR中点击Create Block Design创建一个IP"></a>(2)在IP INTEGRATOR中点击Create Block Design创建一个IP</h1><p><img src="https://img-blog.csdnimg.cn/20210327192659333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="3-在Diagram中点击加号，搜索zynq，点击所对应的Zynq-UltraScale-MPSoc"><a href="#3-在Diagram中点击加号，搜索zynq，点击所对应的Zynq-UltraScale-MPSoc" class="headerlink" title="(3)在Diagram中点击加号，搜索zynq，点击所对应的Zynq UltraScale+ MPSoc"></a>(3)在Diagram中点击加号，搜索zynq，点击所对应的Zynq UltraScale+ MPSoc</h1><p><img src="https://img-blog.csdnimg.cn/20210327192851512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="4-双击IP-Zynq-UltraScale-MPSoc并进行有关配置部分。首先是对Bank电压的配置，分别改为LVCMOS18-Bank0-LVCMOS18-Bank1-LVCMOS18-Bank2-LVCMOS33-Bank3-。SD中打开SD1（本次未用到），I-x2F-OPeripherals中打开PMU（本次未用到），UART0和UART1打开（本次未用到），GPIO打开GPIO0-MIO（一定要打开），SWDT中打开SWDT0和SWTD1（本次未用到），TTC全部打开（本次未用到），GEM3打开（本次未用到），USB0打开（本次未用到）。PSS-REF-CLK保持33-330MHZ，并关闭一些本实验用不到的东西。"><a href="#4-双击IP-Zynq-UltraScale-MPSoc并进行有关配置部分。首先是对Bank电压的配置，分别改为LVCMOS18-Bank0-LVCMOS18-Bank1-LVCMOS18-Bank2-LVCMOS33-Bank3-。SD中打开SD1（本次未用到），I-x2F-OPeripherals中打开PMU（本次未用到），UART0和UART1打开（本次未用到），GPIO打开GPIO0-MIO（一定要打开），SWDT中打开SWDT0和SWTD1（本次未用到），TTC全部打开（本次未用到），GEM3打开（本次未用到），USB0打开（本次未用到）。PSS-REF-CLK保持33-330MHZ，并关闭一些本实验用不到的东西。" class="headerlink" title="(4)双击IP Zynq UltraScale+ MPSoc并进行有关配置部分。首先是对Bank电压的配置，分别改为LVCMOS18(Bank0) LVCMOS18(Bank1)  LVCMOS18(Bank2) LVCMOS33(Bank3) 。SD中打开SD1（本次未用到），I&#x2F;OPeripherals中打开PMU（本次未用到），UART0和UART1打开（本次未用到），GPIO打开GPIO0 MIO（一定要打开），SWDT中打开SWDT0和SWTD1（本次未用到），TTC全部打开（本次未用到），GEM3打开（本次未用到），USB0打开（本次未用到）。PSS_REF_CLK保持33.330MHZ，并关闭一些本实验用不到的东西。"></a>(4)双击IP Zynq UltraScale+ MPSoc并进行有关配置部分。首先是对Bank电压的配置，分别改为LVCMOS18(Bank0) LVCMOS18(Bank1)  LVCMOS18(Bank2) LVCMOS33(Bank3) 。SD中打开SD1（本次未用到），I&#x2F;OPeripherals中打开PMU（本次未用到），UART0和UART1打开（本次未用到），GPIO打开GPIO0 MIO（一定要打开），SWDT中打开SWDT0和SWTD1（本次未用到），TTC全部打开（本次未用到），GEM3打开（本次未用到），USB0打开（本次未用到）。PSS_REF_CLK保持33.330MHZ，并关闭一些本实验用不到的东西。</h1><p><img src="https://img-blog.csdnimg.cn/20210327193216481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（如果我们这里不对Bank进行配置，后面会在生成比特流文件时候报错，类似如下：<br><strong>[Labtools 27-3421] xczu15_0 PL Power Status OFF, cannot connect PL TAP. Check POR_B signal.</strong><br>我在实验中还发现如果同时连接jtag和uart的USB线也会报出这样的错误<br><strong>遇到这种出现红灯直接左上角两个复位按键按一遍，不行直接关了重新开</strong>）</p>
+<p><strong>配置完成如下图所示</strong>可以点击ValidateDesign来进行效验<br><img src="https://img-blog.csdnimg.cn/20210327194314581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="5-在source栏的模块上右键Generate-Output-Products-再次右键点击CreateHDL-Wrapper，点击GenerateBitstream生成比特流文件。"><a href="#5-在source栏的模块上右键Generate-Output-Products-再次右键点击CreateHDL-Wrapper，点击GenerateBitstream生成比特流文件。" class="headerlink" title="(5)在source栏的模块上右键Generate Output Products,再次右键点击CreateHDL Wrapper，点击GenerateBitstream生成比特流文件。"></a>(5)在source栏的模块上右键<em>Generate Output Products</em>,再次右键点击<em>CreateHDL Wrapper</em>，点击<em>GenerateBitstream</em>生成比特流文件。</h1><h1 id="6）SDK配置。在File下点击Export-gt-Export-Hardware，之后再点击File下面的Launch-SDK文件。"><a href="#6）SDK配置。在File下点击Export-gt-Export-Hardware，之后再点击File下面的Launch-SDK文件。" class="headerlink" title="(6）SDK配置。在File下点击Export-&gt;Export Hardware，之后再点击File下面的Launch SDK文件。"></a>(6）SDK配置。在File下点击Export-&gt;Export Hardware，之后再点击File下面的Launch SDK文件。</h1><h1 id="7-在SDK软件打开后，点击File-gt-new-gt-project-我们可以创建一个名为LED的项目。然后在LED的文件夹中打开src，在src中新建一个led-c文件。"><a href="#7-在SDK软件打开后，点击File-gt-new-gt-project-我们可以创建一个名为LED的项目。然后在LED的文件夹中打开src，在src中新建一个led-c文件。" class="headerlink" title="(7)在SDK软件打开后，点击File-&gt;new-&gt;project,我们可以创建一个名为LED的项目。然后在LED的文件夹中打开src，在src中新建一个led.c文件。"></a>(7)在SDK软件打开后，点击File-&gt;new-&gt;project,我们可以创建一个名为LED的项目。然后在LED的文件夹中打开src，在src中新建一个led.c文件。</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;xgpiops.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;sleep.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="type">static</span> XGpioPs psGpioInstancePtr;</span><br><span class="line">XGpioPs_Config* GpioConfigPtr;</span><br><span class="line"><span class="type">int</span> iPinNumber= <span class="number">23</span>; <span class="comment">//MIO23</span></span><br><span class="line">u32 uPinDirection = <span class="number">0x1</span>; <span class="comment">//1表示输出， 0表示输入</span></span><br><span class="line"><span class="type">int</span> xStatus;</span><br><span class="line"><span class="comment">//--MIO的初始化</span></span><br><span class="line">GpioConfigPtr = XGpioPs_LookupConfig(XPAR_PSU_GPIO_0_DEVICE_ID);</span><br><span class="line"><span class="keyword">if</span>(GpioConfigPtr == <span class="literal">NULL</span>)</span><br><span class="line"><span class="keyword">return</span> XST_FAILURE;</span><br><span class="line">xStatus = XGpioPs_CfgInitialize(&amp;psGpioInstancePtr,GpioConfigPtr,</span><br><span class="line">GpioConfigPtr-&gt;BaseAddr);</span><br><span class="line"><span class="keyword">if</span>(XST_SUCCESS != xStatus)</span><br><span class="line">print(<span class="string">&quot; PS GPIO INIT FAILED \n\r&quot;</span>);</span><br><span class="line"><span class="comment">//--MIO的输入输出操作</span></span><br><span class="line">XGpioPs_SetDirectionPin(&amp;psGpioInstancePtr, iPinNumber,uPinDirection);<span class="comment">//配置MIO输出方向</span></span><br><span class="line">XGpioPs_SetOutputEnablePin(&amp;psGpioInstancePtr, iPinNumber,<span class="number">1</span>);<span class="comment">//配置MIO的第7位输出</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">XGpioPs_WritePin(&amp;psGpioInstancePtr, iPinNumber, <span class="number">1</span>);<span class="comment">//点亮MIO的第7位输出1</span></span><br><span class="line">usleep(<span class="number">500000</span>); <span class="comment">//延时</span></span><br><span class="line">XGpioPs_WritePin(&amp;psGpioInstancePtr, iPinNumber, <span class="number">0</span>);<span class="comment">//熄灭MIO的第7位输出0</span></span><br><span class="line">usleep(<span class="number">500000</span>); <span class="comment">//延时</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>（其实这段代码我目前还没有看懂，但是它的指令是让MIO23闪烁）</strong></p>
+<h1 id="8-上板，连接zcu106的jtag端口和电脑，sw6调至0000，打开电源并连接设备，烧录进去bit文件，之后在SDK软件中打开调试，Debug-as-Launch-on-Hardware，然后点击下图中的播放键运行程序。"><a href="#8-上板，连接zcu106的jtag端口和电脑，sw6调至0000，打开电源并连接设备，烧录进去bit文件，之后在SDK软件中打开调试，Debug-as-Launch-on-Hardware，然后点击下图中的播放键运行程序。" class="headerlink" title="(8)上板，连接zcu106的jtag端口和电脑，sw6调至0000，打开电源并连接设备，烧录进去bit文件，之后在SDK软件中打开调试，Debug as Launch on Hardware，然后点击下图中的播放键运行程序。"></a>(8)上板，连接zcu106的jtag端口和电脑，sw6调至0000，打开电源并连接设备，烧录进去bit文件，之后在SDK软件中打开调试，Debug as Launch on Hardware，然后点击下图中的<em>播放键</em>运行程序。</h1><p><img src="https://img-blog.csdnimg.cn/2021032720002864.png" alt="在这里插入图片描述"></p>
+<h1 id="9-观察右上角的MIO23，可以发现它在闪烁。"><a href="#9-观察右上角的MIO23，可以发现它在闪烁。" class="headerlink" title="(9)观察右上角的MIO23，可以发现它在闪烁。"></a>(9)观察右上角的MIO23，可以发现它在闪烁。</h1><p>[video(video-J5bsgTmJ-1616851658071)(type-bilibili)(url-<a target="_blank" rel="noopener" href="https://player.bilibili.com/player.html?aid=502364280)(image-https://ss.csdn.net/p?http://i2.hdslb.com/bfs/archive/d4d7ef363dc8b5a9513c433e9182700bf2e4d881.jpg)(title-PS%E4%BE%A7MIO%E9%97%AA%E7%81%AF)%5D">https://player.bilibili.com/player.html?aid=502364280)(image-https://ss.csdn.net/p?http://i2.hdslb.com/bfs/archive/d4d7ef363dc8b5a9513c433e9182700bf2e4d881.jpg)(title-PS侧MIO闪灯)]</a></p>
+<p><img src="https://img-blog.csdnimg.cn/2021032720090547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4ODYzODQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FPGA/" rel="tag"># FPGA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/Ultra96V2/" rel="prev" title="Ultra96V2开发板配置pynq以及dpu-pynq">
+      <i class="fa fa-chevron-left"></i> Ultra96V2开发板配置pynq以及dpu-pynq
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/01/VCS/" rel="next" title="VCS的基本使用">
+      VCS的基本使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-PL%E4%BE%A7%E7%9A%84%E9%97%AA%E7%81%AF"><span class="nav-number">1.</span> <span class="nav-text">1.PL侧的闪灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E6%89%93%E5%BC%80vivado%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AAproject%EF%BC%9APL-LED"><span class="nav-number">2.</span> <span class="nav-text">(1)首先打开vivado建立一个project：PL_LED</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%9C%A8project%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6%EF%BC%9APL-LED-v"><span class="nav-number">3.</span> <span class="nav-text">(2)在project中创建一个设计文件：PL_LED.v</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%A2%9E%E5%8A%A0%E7%BA%A6%E6%9D%9F%E6%96%87%E4%BB%B6PL-LED-xdc"><span class="nav-number">4.</span> <span class="nav-text">(3)增加约束文件PL_LED.xdc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%EF%BC%89%E8%BF%9E%E6%8E%A5jtag%E4%B8%8B%E8%BD%BD%E7%BA%BF%EF%BC%8C%E5%B9%B6%E5%B0%86%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%BC%8F%E8%AE%BE%E7%BD%AE%E4%B8%BAjtag%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">(4）连接jtag下载线，并将下载模式设置为jtag模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-PS%E4%BE%A7MIO%E9%97%AA%E7%81%AF"><span class="nav-number">6.</span> <span class="nav-text">2.PS侧MIO闪灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E6%89%93%E5%BC%80vivado%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AAproject%EF%BC%9APS-MIO-LED"><span class="nav-number">7.</span> <span class="nav-text">(1)首先打开vivado建立一个project：PS_MIO_LED</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%9C%A8IP-INTEGRATOR%E4%B8%AD%E7%82%B9%E5%87%BBCreate-Block-Design%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAIP"><span class="nav-number">8.</span> <span class="nav-text">(2)在IP INTEGRATOR中点击Create Block Design创建一个IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%9C%A8Diagram%E4%B8%AD%E7%82%B9%E5%87%BB%E5%8A%A0%E5%8F%B7%EF%BC%8C%E6%90%9C%E7%B4%A2zynq%EF%BC%8C%E7%82%B9%E5%87%BB%E6%89%80%E5%AF%B9%E5%BA%94%E7%9A%84Zynq-UltraScale-MPSoc"><span class="nav-number">9.</span> <span class="nav-text">(3)在Diagram中点击加号，搜索zynq，点击所对应的Zynq UltraScale+ MPSoc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%8F%8C%E5%87%BBIP-Zynq-UltraScale-MPSoc%E5%B9%B6%E8%BF%9B%E8%A1%8C%E6%9C%89%E5%85%B3%E9%85%8D%E7%BD%AE%E9%83%A8%E5%88%86%E3%80%82%E9%A6%96%E5%85%88%E6%98%AF%E5%AF%B9Bank%E7%94%B5%E5%8E%8B%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%88%86%E5%88%AB%E6%94%B9%E4%B8%BALVCMOS18-Bank0-LVCMOS18-Bank1-LVCMOS18-Bank2-LVCMOS33-Bank3-%E3%80%82SD%E4%B8%AD%E6%89%93%E5%BC%80SD1%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CI-x2F-OPeripherals%E4%B8%AD%E6%89%93%E5%BC%80PMU%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CUART0%E5%92%8CUART1%E6%89%93%E5%BC%80%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CGPIO%E6%89%93%E5%BC%80GPIO0-MIO%EF%BC%88%E4%B8%80%E5%AE%9A%E8%A6%81%E6%89%93%E5%BC%80%EF%BC%89%EF%BC%8CSWDT%E4%B8%AD%E6%89%93%E5%BC%80SWDT0%E5%92%8CSWTD1%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CTTC%E5%85%A8%E9%83%A8%E6%89%93%E5%BC%80%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CGEM3%E6%89%93%E5%BC%80%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%EF%BC%8CUSB0%E6%89%93%E5%BC%80%EF%BC%88%E6%9C%AC%E6%AC%A1%E6%9C%AA%E7%94%A8%E5%88%B0%EF%BC%89%E3%80%82PSS-REF-CLK%E4%BF%9D%E6%8C%8133-330MHZ%EF%BC%8C%E5%B9%B6%E5%85%B3%E9%97%AD%E4%B8%80%E4%BA%9B%E6%9C%AC%E5%AE%9E%E9%AA%8C%E7%94%A8%E4%B8%8D%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF%E3%80%82"><span class="nav-number">10.</span> <span class="nav-text">(4)双击IP Zynq UltraScale+ MPSoc并进行有关配置部分。首先是对Bank电压的配置，分别改为LVCMOS18(Bank0) LVCMOS18(Bank1)  LVCMOS18(Bank2) LVCMOS33(Bank3) 。SD中打开SD1（本次未用到），I&#x2F;OPeripherals中打开PMU（本次未用到），UART0和UART1打开（本次未用到），GPIO打开GPIO0 MIO（一定要打开），SWDT中打开SWDT0和SWTD1（本次未用到），TTC全部打开（本次未用到），GEM3打开（本次未用到），USB0打开（本次未用到）。PSS_REF_CLK保持33.330MHZ，并关闭一些本实验用不到的东西。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%9C%A8source%E6%A0%8F%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B8%8A%E5%8F%B3%E9%94%AEGenerate-Output-Products-%E5%86%8D%E6%AC%A1%E5%8F%B3%E9%94%AE%E7%82%B9%E5%87%BBCreateHDL-Wrapper%EF%BC%8C%E7%82%B9%E5%87%BBGenerateBitstream%E7%94%9F%E6%88%90%E6%AF%94%E7%89%B9%E6%B5%81%E6%96%87%E4%BB%B6%E3%80%82"><span class="nav-number">11.</span> <span class="nav-text">(5)在source栏的模块上右键Generate Output Products,再次右键点击CreateHDL Wrapper，点击GenerateBitstream生成比特流文件。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%EF%BC%89SDK%E9%85%8D%E7%BD%AE%E3%80%82%E5%9C%A8File%E4%B8%8B%E7%82%B9%E5%87%BBExport-gt-Export-Hardware%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%86%8D%E7%82%B9%E5%87%BBFile%E4%B8%8B%E9%9D%A2%E7%9A%84Launch-SDK%E6%96%87%E4%BB%B6%E3%80%82"><span class="nav-number">12.</span> <span class="nav-text">(6）SDK配置。在File下点击Export-&gt;Export Hardware，之后再点击File下面的Launch SDK文件。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E5%9C%A8SDK%E8%BD%AF%E4%BB%B6%E6%89%93%E5%BC%80%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BBFile-gt-new-gt-project-%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BALED%E7%9A%84%E9%A1%B9%E7%9B%AE%E3%80%82%E7%84%B6%E5%90%8E%E5%9C%A8LED%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E6%89%93%E5%BC%80src%EF%BC%8C%E5%9C%A8src%E4%B8%AD%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAled-c%E6%96%87%E4%BB%B6%E3%80%82"><span class="nav-number">13.</span> <span class="nav-text">(7)在SDK软件打开后，点击File-&gt;new-&gt;project,我们可以创建一个名为LED的项目。然后在LED的文件夹中打开src，在src中新建一个led.c文件。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E4%B8%8A%E6%9D%BF%EF%BC%8C%E8%BF%9E%E6%8E%A5zcu106%E7%9A%84jtag%E7%AB%AF%E5%8F%A3%E5%92%8C%E7%94%B5%E8%84%91%EF%BC%8Csw6%E8%B0%83%E8%87%B30000%EF%BC%8C%E6%89%93%E5%BC%80%E7%94%B5%E6%BA%90%E5%B9%B6%E8%BF%9E%E6%8E%A5%E8%AE%BE%E5%A4%87%EF%BC%8C%E7%83%A7%E5%BD%95%E8%BF%9B%E5%8E%BBbit%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B9%8B%E5%90%8E%E5%9C%A8SDK%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%89%93%E5%BC%80%E8%B0%83%E8%AF%95%EF%BC%8CDebug-as-Launch-on-Hardware%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E4%B8%8B%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%92%AD%E6%94%BE%E9%94%AE%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E3%80%82"><span class="nav-number">14.</span> <span class="nav-text">(8)上板，连接zcu106的jtag端口和电脑，sw6调至0000，打开电源并连接设备，烧录进去bit文件，之后在SDK软件中打开调试，Debug as Launch on Hardware，然后点击下图中的播放键运行程序。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-%E8%A7%82%E5%AF%9F%E5%8F%B3%E4%B8%8A%E8%A7%92%E7%9A%84MIO23%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%8F%91%E7%8E%B0%E5%AE%83%E5%9C%A8%E9%97%AA%E7%83%81%E3%80%82"><span class="nav-number">15.</span> <span class="nav-text">(9)观察右上角的MIO23，可以发现它在闪烁。</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">君落羽</p>
+  <div class="site-description" itemprop="description">君落羽的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">君落羽</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
