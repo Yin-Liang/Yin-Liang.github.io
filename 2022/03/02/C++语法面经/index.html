@@ -20,30 +20,39 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="君落羽的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="君落羽">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="一.C++基础 1.语言基础1.1 野指针是什么？ 概念：野指针就是指针指向的位置是不可知的（随机的、不正确的、没有明确限制的）  产生原因：释放内存后指针不及时置空（野指针），依然指向了该内存，那么可能出现非法访问的错误。这些我们都要注意避免。  避免办法： （1）初始化置NULL （2）申请内存后判空 （3）指针释放后置NULL （4）使用智能指针 1234567891011121314151">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面经">
+<meta property="og:url" content="http://example.com/2022/03/02/C++%E8%AF%AD%E6%B3%95%E9%9D%A2%E7%BB%8F/index.html">
 <meta property="og:site_name" content="君落羽">
-<meta property="og:description" content="君落羽的博客">
+<meta property="og:description" content="一.C++基础 1.语言基础1.1 野指针是什么？ 概念：野指针就是指针指向的位置是不可知的（随机的、不正确的、没有明确限制的）  产生原因：释放内存后指针不及时置空（野指针），依然指向了该内存，那么可能出现非法访问的错误。这些我们都要注意避免。  避免办法： （1）初始化置NULL （2）申请内存后判空 （3）指针释放后置NULL （4）使用智能指针 1234567891011121314151">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-11644e4b1417b90c2c869cf4deda4b8c_1440w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-0d5aee78b17e197b1d590769ff8af4c4_1440w.jpg">
+<meta property="og:image" content="c:/Users/yinliang/AppData/Roaming/Typora/typora-user-images/image-20220302144517724.png">
+<meta property="og:image" content="c:/Users/yinliang/AppData/Roaming/Typora/typora-user-images/image-20220302151012017.png">
+<meta property="og:image" content="c:/Users/yinliang/AppData/Roaming/Typora/typora-user-images/image-20220302160328391.png">
+<meta property="article:published_time" content="2022-03-02T13:40:12.000Z">
+<meta property="article:modified_time" content="2022-03-02T13:41:07.101Z">
 <meta property="article:author" content="君落羽">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-11644e4b1417b90c2c869cf4deda4b8c_1440w.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/03/02/C++%E8%AF%AD%E6%B3%95%E9%9D%A2%E7%BB%8F/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>君落羽</title>
+  <title>C++面经 | 君落羽</title>
   
 
 
@@ -146,9 +155,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -164,10 +174,9 @@
       <meta itemprop="name" content="君落羽">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/02/C++%E8%AF%AD%E6%B3%95%E9%9D%A2%E7%BB%8F/" class="post-title-link" itemprop="url">C++面经</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          C++面经
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +200,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>一.C++基础</p>
+        <p>一.C++基础</p>
 <h2 id="1-语言基础"><a href="#1-语言基础" class="headerlink" title="1.语言基础"></a>1.语言基础</h2><h3 id="1-1-野指针是什么？"><a href="#1-1-野指针是什么？" class="headerlink" title="1.1 野指针是什么？"></a>1.1 野指针是什么？</h3><ol>
 <li><p><strong>概念：</strong>野指针就是指针指向的位置是不可知的（随机的、不正确的、没有明确限制的）</p>
 </li>
@@ -817,451 +826,34 @@
 <p><strong>持久性</strong>：事务处理结束后，<strong>对数据的修改就是永久的</strong>，即便系统故障也不会丢失。 </p>
 <h3 id="1-23-SQL中的NOW-和CURRENT-DATE-两个函数有什么区别？"><a href="#1-23-SQL中的NOW-和CURRENT-DATE-两个函数有什么区别？" class="headerlink" title="1.23  SQL中的NOW()和CURRENT_DATE()两个函数有什么区别？"></a>1.23  SQL中的NOW()和CURRENT_DATE()两个函数有什么区别？</h3><p>NOW（）命令用于显示当前年份，月份，日期，小时，分钟和秒。<br>CURRENT_DATE（）仅显示当前年份，月份和日期。  </p>
 <h2 id="2-Redis"><a href="#2-Redis" class="headerlink" title="2 Redis"></a>2 Redis</h2>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/Balser/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="君落羽">
-      <meta itemprop="description" content="君落羽的博客">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君落羽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/01/Balser/" class="post-title-link" itemprop="url">Balser相机</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-01 20:42:12 / 修改时间：20:42:45" itemprop="dateCreated datePublished" datetime="2022-03-01T20:42:12+08:00">2022-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm"><a href="#一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm" class="headerlink" title="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm"></a>一、下载<strong>Balser</strong>相机所需要的软件   <strong>pylon viewer</strong> 型号为<strong>acA2440-20gm</strong></h2><p>有三种触发方式  硬件触发  软件触发  自由运行<br><img src="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h2 id="二、连接网线，主要关注触发信号这块。"><a href="#二、连接网线，主要关注触发信号这块。" class="headerlink" title="二、连接网线，主要关注触发信号这块。"></a>二、连接网线，主要关注触发信号这块。</h2><p><strong>引脚</strong> 分别对应六种颜色为    <strong>红色  绿色 白色 蓝色 棕色 黑色</strong><br><font color=Red><strong>不确定这颜色是不是一一对齐的！！！</strong></font><br><img src="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12 -24VDC。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/1e589c54c2834b05ac00918558b2a498.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1044d1be512242999b567e3417ef07d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p><strong>Trigger Mode</strong>是触发模式选择<br><img src="https://img-blog.csdnimg.cn/c43e5c59c11648d29ff00fa84e7889a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5b91ec0d5c1243af9ff1f3550479e1d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可见，需要先选择对应的触发模式，再将Trigger Mode更改为ON。<br>（1）对于选择software的<strong>软件触发</strong>，Trigger Mode 为on便可以实现软件触发。<br>（2）对于选择的Line1 Line3的<strong>硬件触发</strong>， Trigger Mode 为on便可以实现硬件触发，还可以选择是上升沿触发还是下降沿触发。<br><img src="https://img-blog.csdnimg.cn/3d6c891ba13445a29075856cbf13fd2b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h2 id="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"><a href="#三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？" class="headerlink" title="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"></a>三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？</h2><h2 id="假设一"><a href="#假设一" class="headerlink" title="假设一"></a>假设一</h2><p><strong>input</strong><br>        相机的输入Line1接线上升沿: 数据线对应6根线，1和6已经接220V转12V电源的适配器，只需要接2绿线和5棕线。<br>        <img src="https://img-blog.csdnimg.cn/69e6e83f69ec4424b57f36628440a0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p><strong>output</strong><br>        （1）相机输出<strong>Line2接线</strong>：第四根线蓝线为相机输出，输出源有如下图几种选择，如果选择的是<strong>Exposure Active</strong>， 启用后当相机触发并曝光时会输出一个0V（对应白线），相机未触发为开路。<br>        （2）<strong>Exposure Active</strong>下，万用表一个接一个24V，一个接白线，只有15Hz，接24V和白线可以用PLC来监控&#x2F;确认相机收到Trigger信号（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zachary_hao/article/details/115653522%EF%BC%89">https://blog.csdn.net/zachary_hao/article/details/115653522）</a><br>        （3）当软件<strong>设置 Line2 为<font color=Red><strong>Frame Trigger Wait</strong></font><strong>， 相机的 output  便出现一个</strong>20Hz的曝光脉冲</strong>，但是这种情况也需要硬件触发的形式，如下图所示（<strong>帧触发等待信号</strong>）。<br>        <img src="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<table>
-<thead>
-<tr>
-<th>Exposure Active</th>
-<th>曝光开始时，该信号会变为高电平；曝光结束时，该信号会变为低电平。在滚动快门相机上，最后一行的曝光结束时，信号会变为低电平。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>FlashWindow</td>
-<td>您可以启动闪光灯时，该信号会变为高电平。当您应该停止闪光灯照明时，该信号会变为低电平</td>
-</tr>
-<tr>
-<td>FrameTriggerWait</td>
-<td>您可以使用相机的“触发等待”信号，例如帧触发等待，以优化触发图像采集并避免过度触发</td>
-</tr>
-<tr>
-<td><img src="https://img-blog.csdnimg.cn/1ea318518c224988b2f1e8f7d2bb2fb0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_14,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="假设二"><a href="#假设二" class="headerlink" title="假设二"></a>假设二</h2><blockquote>
-<p>考不考虑使用<font color=Red>GPIO</font>来输出<br><img src="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-</blockquote>
-<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><blockquote>
-<p>可能需要考虑：当打开Blaser的软件，设置外部触发时，单片机给的脉冲信号起到了作用（别忘了把触发模式设置位:lin1，且状态选择on）；但是相机对应的程序运行时，获得图像的topic并保存，发现还是软件触发，这是因为pylon_camera软件默认的就算软件触发；所以下一步改软件里面的程序，变成外部硬件触发模式</p>
-</blockquote>
-<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><blockquote>
-<p>怎么连接FPGA呢？？？</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/hltt3838/article/details/109007872">https://blog.csdn.net/hltt3838/article/details/109007872</a><br>[2] <a target="_blank" rel="noopener" href="https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines">https://zh.docs.baslerweb.com/aca2440-20gm.html#general-purpose-io-lines</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/01/Balser/" rel="prev" title="Balser相机">
+      <i class="fa fa-chevron-left"></i> Balser相机
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/DC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="君落羽">
-      <meta itemprop="description" content="君落羽的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君落羽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/01/DC/" class="post-title-link" itemprop="url">DC工具的基本使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-01 20:40:18 / 修改时间：20:40:50" itemprop="dateCreated datePublished" datetime="2022-03-01T20:40:18+08:00">2022-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 本文主要参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/w1152715961/article/details/113927697">DC WorkShop Lab2_w1152715961的博客-CSDN博客</a></p>
-<p>​    一直以来，我都是把代码直接扔到vivado里面，从来没有考虑过它的实际综合的过程是怎么实现，这周有时间来研究一下design compiler工具的使用。</p>
-<h1 id="（一）原理"><a href="#（一）原理" class="headerlink" title="（一）原理"></a>（一）原理</h1><p>​    逻辑综合工具实际上就是将RTL代码映射到具体的工艺库上（一般由制造厂家提供），再通过添加约束信息（时序约束，线载模型，面积，功耗等，主要以tcl语言形式）,对RTL代码进行逻辑综合，形成门级网表（netlists）。</p>
-<p>​    一般先将VHDL&#x2F;Verilog&#x2F;Systemverilog转化为GTECH网表（中间网表），再映射到不同的工艺库上，生成TSMC网表。</p>
-<p>​    Synthesis &#x3D; Translation + Gate Mapping + Loigic Optimization</p>
-<p><img src="https://img-blog.csdnimg.cn/e554c187b28644f3aa41edcacec02d33.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h1 id="（二）一些路径的设置"><a href="#（二）一些路径的设置" class="headerlink" title="（二）一些路径的设置"></a>（二）一些路径的设置</h1><p>下面这张图片引用来自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/129059203">知乎</a></p>
-<p><img src="https://img-blog.csdnimg.cn/9777edcdf7604a1c9af415cbe73c6983.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><strong>Target_library</strong>: 由半导体厂商提供，包含工艺技术参数和单元的功能，DC使用库里的单元构成电路。工艺库一般是.dbDE 的格式，这种格式是DC认识的一种内部文件格式；<br> <strong>Link_library</strong>: 设置模块或者单元电路的引用，对于所有DC可能用到的库，都需要在Link_library中进行指定，包括要使用到的IP文件。此处还要将search_path添加进来，这样才能找到.db文件；<br> <strong>Symbol_library</strong>: 包含工艺库中的单元图形表示的库名称；<br> <strong>Search_Path</strong>: 包括所有必需文件的指定路径都需要在此进行声明。</p>
-<p><strong>其中lib文件可以打开，工程师可以看懂。</strong></p>
-<h1 id="（三）DC工具的四种打开方式"><a href="#（三）DC工具的四种打开方式" class="headerlink" title="（三）DC工具的四种打开方式"></a><strong>（三）DC工具的四种打开方式</strong></h1><p><img src="https://img-blog.csdnimg.cn/d2bc313365a74ee3a6323d203724bcf5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<table>
-<thead>
-<tr>
-<th><strong>dcsh mode</strong></th>
-<th><strong>dc_shell</strong></th>
-<th><strong>支持调用dcsh脚本，不支持tcl，仅支持文本界面，没有图形界面</strong></th>
-<th><strong>可以通过dc_shell -f script方式来调用脚本</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>design_analyzer</strong></td>
-<td><strong>对应的dc_shell格式的图形化界面，故不能调用tcl脚本</strong></td>
-<td><strong>会产生command.log以及view_command.log来记录执行命令以及参数，会在运行中产生临时的filenames.log用于记录访问的目录，退出会自动删除。</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>tcl mode</strong></td>
-<td><strong>dc_shell -t</strong></td>
-<td><strong>dc_shell的扩展，支持tcl脚本</strong></td>
-<td><strong>可以通过dc_shell-t -f script方式来调用脚本</strong></td>
-</tr>
-<tr>
-<td><strong>design_vision</strong></td>
-<td><strong>对应的dc_shell-t格式的图形化界面，故能调用tcl脚本</strong></td>
-<td><strong>只会产生command.log的日志文件</strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>   其中dcsh不能调用tcl，tcl也不能调用dcsh。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行tcl脚本</span></span><br><span class="line">source my.tcl</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl</span></span><br><span class="line">dc_shell-t -f  my.tcl</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl，并将输出定向到对应的log文件中</span></span><br><span class="line">dc_shell-t -f  my.tcl  &gt; my.log</span><br><span class="line"></span><br><span class="line"><span class="comment">//dc执行tcl，并将输出定向到对应的log文件中,并且在linux屏幕中输出</span></span><br><span class="line">dc_shell-t -f  my.tcl  | tee my.log</span><br></pre></td></tr></table></figure>
-
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h1 id="（四）lab2-2007-03"><a href="#（四）lab2-2007-03" class="headerlink" title="（四）lab2 2007.03"></a><strong>（四）lab2 2007.03</strong></h1><p>​    本来想跑通一个2012.06的lab1，但是因为找到的文件缺失一些东西，最后还是决定使用2007.3的lab来跑一遍试试看。这个lab的文件可以在****<a target="_blank" rel="noopener" href="http://bbs.eetop.cn/forum.php?mod=viewthread&tid=245339&highlight=DC+WorkShop">EETOP</a>****上面找到，包括了实验文件以及对应的手册，还是写的非常详细的。</p>
-<p>​    <strong>准备工作</strong>：安装<strong>DC2016版本</strong>的虚拟机，<strong>lab2</strong>的文件，<strong>DC1_200703_LG_02_setup.doc</strong>对应的手册。</p>
-<h3 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h3><blockquote>
-<p>​    flow的第一个工作是将不完整的**.synopsys_dc.setup<strong>文件补齐。</strong>.synopsys_dc.setup<strong>它本身是一个隐藏文件，需要用</strong>ls -la<strong>来查看，之后去修改它对应的路径设置，包括search_path、target_library、link_library、symbol_library。我们先不关心这个</strong>.synopsys_dc.setup**自己去写应该怎么写。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/6eab21b8b76044379eaac835403c98b2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<blockquote>
-<p>在<strong>link_library</strong>的设置中必须包含<strong>’*’,</strong> 表示<strong>DC在引用实例化模块或者单元电路时首先搜索已经调进DC memory的模块和单元电路，如果在link library中不包含’*’，DC就不会使用DC memory中已有的模块</strong>，因此，会出现无法匹配的模块或单元电路的警告信息(unresolved design reference)。</p>
-</blockquote>
-<h3 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h3><blockquote>
-<p>   输入design_vision打开DC界面，并查看File-&gt;setup,观察路径是否正确。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/18865ed9fd5a4b22b2ac840e2f5f7234.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//tcl查看对应的路径</span><br><span class="line">printvar target_library</span><br><span class="line">printvar link_library</span><br><span class="line">printvar symbol_library</span><br><span class="line">printvar search_path</span><br></pre></td></tr></table></figure>
-
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h3><blockquote>
-<p>   在File-&gt;read中选择TOP.vhd,选中top右下角会出现top字样。点击红色的1可以查看对应的schematic。 </p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/a805aedeae9e4a12a93e4b0bc39dff0e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<blockquote>
-<p>  在 File-&gt;Link Design 中点击ok</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/b9205faf657d41e3b4a4ec6da61964bf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//Save the unmapped design in ddc fromat，将没有映射的网表文件以ddc格式保存起来</span><br><span class="line">write –hier –f ddc –out unmapped/TOP.ddc</span><br><span class="line">//see a list of designs and libraries in memory，可以看到对应的design和lib清单</span><br><span class="line">list_designs</span><br><span class="line">list_libs</span><br></pre></td></tr></table></figure>
-
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h3><blockquote>
-<p>  **source TOP.con,**这实际上就是一个约束文件。下面是TOP.con文件内容，包括了时钟约束以及线载模型的约束过程。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> lib_name cb13fs120_tsmc_max</span><br><span class="line">current_design TOP</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reset all constraints </span></span><br><span class="line">reset_design</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create clock object and set uncertainty</span></span><br><span class="line">create_clock -period 2 [get_ports Clk]</span><br><span class="line">set_clock_uncertainty 0.2 [get_clocks Clk]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set constraints on input ports</span></span><br><span class="line">suppress_message UID-401</span><br><span class="line">set_driving_cell -library <span class="variable">$lib_name</span> -lib_cell sdcfq1 [remove_from_collection [all_inputs] [get_ports Clk]]</span><br><span class="line">set_input_delay 0.1 -max -clock Clk [remove_from_collection [all_inputs] [get_ports Clk]]</span><br><span class="line">set_input_delay 1.2 -max -clock Clk [get_ports Neg_Flag]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set constraints on output ports</span></span><br><span class="line">set_output_delay 1 -max -clock Clk [all_outputs]</span><br><span class="line">set_load [<span class="built_in">expr</span> [load_of <span class="variable">$lib_name</span>/an02d0/A1] * 15] [all_outputs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the wire load model </span></span><br><span class="line">set_wire_load_mode top</span><br><span class="line">set_wire_load_model -name 16000</span><br></pre></td></tr></table></figure>
-
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h3><blockquote>
-<p>  <strong>compile 编译</strong></p>
-<p>  <strong>ultra 超级编译</strong></p>
-<p>执行编译的过程中有三个层次的优化过程：</p>
-<p>（1）架构的优化（插入bufio）</p>
-<p>（2）逻辑的优化&#x2F;GTECH网表的优化（卡诺图的优化）</p>
-<p>（3）门级优化</p>
-<p><strong>在满足时序约束的条件下，保证面积的最小。</strong></p>
-<p>gate clock 可以用来控制功耗</p>
-<p>incremental mappping 增量映射，原理图之间可以进行跳转的过程。</p>
-<p>auto ungroup 把模块打散掉</p>
-</blockquote>
-<p> <img src="https://img-blog.csdnimg.cn/c5490f6c24674a768af89303351ea470.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task6"><a href="#Task6" class="headerlink" title="Task6"></a>Task6</h3><blockquote>
-<p>  <strong>查看所有违例</strong>     report_constraint -all_violators</p>
-<p>  <strong>查看各种报告</strong>  </p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/bcf08cd407e14213a4fad46fd46eaf48.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h3><blockquote>
-<p>  保存文件到 mapped中，仍然以ddc的格式来进行保存文件。</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/b95b55202c784ae1bc3352c3169cc740.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">   </p>
-<blockquote>
-<p>​    保存tcl脚本，先点击history，再鼠标全部选中，然后点击save contents as，将tcl脚本保存下来。<strong>之后可以通过 design_vision –f scripts&#x2F;run_history.tcl 直接一键执行全部dc过程。</strong></p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/d64a4499c54f4acb9555da4f1c0e4810.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h3 id="Task8"><a href="#Task8" class="headerlink" title="Task8"></a>Task8</h3><blockquote>
-<p>  <strong>remove_design -designs</strong> 退出所有设计，然后exit退出。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/KV260/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="君落羽">
-      <meta itemprop="description" content="君落羽的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君落羽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/01/KV260/" class="post-title-link" itemprop="url">KV260相机例程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-01 20:39:11 / 修改时间：20:40:01" itemprop="dateCreated datePublished" datetime="2022-03-01T20:39:11+08:00">2022-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>KV260板卡支持vitis-ai，板卡本身有很多丰富的例程。</p>
-<h1 id="一、镜像文件"><a href="#一、镜像文件" class="headerlink" title="一、镜像文件"></a>一、镜像文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.xilinx.com/member/forms/download/xef.html?filename=petalinux-sdimage-2021.1-update1.wic.xz</span><br></pre></td></tr></table></figure>
-<p>首先在网站上下载镜像，根据<a target="_blank" rel="noopener" href="https://xilinx.github.io/kria-apps-docs/main/build/html/docs/smartcamera/docs/app_deployment.html">官方的流程</a>来，先用Balena Etcher tool 进行SD卡烧录。<br><img src="https://img-blog.csdnimg.cn/db776049c51f435696d8f4fdd92ce312.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="二、连线"><a href="#二、连线" class="headerlink" title="二、连线"></a>二、连线</h1><h2 id="1-连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。"><a href="#1-连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。" class="headerlink" title="1.连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。"></a>1.连接好网线接口到路由器，USB-micro-USB线到电脑，HDMI线到一台显示屏。</h2><pre><code>板卡没有开关，插入电源线即启动（注意插入SD卡），最好不要在通电情况下连接HDMI线。
-如果没有路由器，可以用电脑的网口，首先在网络配置时候选择电脑的wlan共享以太网，然后在板卡中设置ip。
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig eth0 192.168.137.3 broadcast 0.0.0.0 netmask 255.255.255.0 up</span><br><span class="line">sudo route add default gw 192.168.137.1</span><br></pre></td></tr></table></figure>
-<p>建议还是用路由器……</p>
-<h2 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h2><p>用MobalXterm连接串口，板卡本身连接后有两个COM口，选择小的COM口，调整波特率为115200.</p>
-<p>开始输入用户petalinux，并输入自己设定的密码。</p>
-<p>先给予root权限</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su -l root</span><br></pre></td></tr></table></figure>
-<p>输入<code>ifconfig</code> 查看网址，之后可以不再使用usb线，直接用<br><code>ssh petalinux@[ip]</code>来连接板卡。</p>
-<h2 id="3-跑相机例程"><a href="#3-跑相机例程" class="headerlink" title="3.跑相机例程"></a>3.跑相机例程</h2><p>更新</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf update</span><br><span class="line">sudo dnf clean all</span><br></pre></td></tr></table></figure>
-<p>查看有哪些例程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil getpkgs</span><br></pre></td></tr></table></figure>
-<p>安装smartcam例程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install packagegroup-kv260-smartcam.noarch</span><br></pre></td></tr></table></figure>
-<p>查看哪些程序在运行，一般都有一个kv260-dp在跑</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil      listapps</span><br></pre></td></tr></table></figure>
-<p>先用unloadapp把kv260-dp关掉，再运行smartcam程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo xmutil      unloadapp</span><br><span class="line">sudo xmutil      loadapp kv260-smartcam</span><br></pre></td></tr></table></figure>
-<p>如果使用的是送的mipi摄像头，但是显示器本身必须达到相应的像素要求才能运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smartcam --mipi -W 1920 -H 1080 -r 30 --target dp</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/4471d30b63f84f84a8bb12b4ca77e9cd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h2 id="4-结果"><a href="#4-结果" class="headerlink" title="4.结果"></a>4.结果</h2><p><img src="https://img-blog.csdnimg.cn/55e6ac4825cc4e0e989fc6fe3d7ba6e5.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>……<strong>没有红色外壳立不起来</strong></p>
-<h1 id="三、jupyter"><a href="#三、jupyter" class="headerlink" title="三、jupyter"></a>三、jupyter</h1><p>如果板卡启动是已经连接以太网，那么启动时会默认打开一个jupyter，输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter-server list</span><br></pre></td></tr></table></figure>
-
-<p>获得当前正在运行的jupyter程序，然后复制链接直接在浏览器打开即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="君落羽">
-      <meta itemprop="description" content="君落羽的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君落羽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/01/%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">FPGA时序分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-01 20:38:11 / 修改时间：20:38:45" itemprop="dateCreated datePublished" datetime="2022-03-01T20:38:11+08:00">2022-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 本文主要参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/4579169">猫叔的时序分析</a>，在看了大佬的博客后，我总结了下面的PPT。</p>
-<p><img src="https://img-blog.csdnimg.cn/22a94233ce16437bbf598eee98063cea.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/5f2c2a7c1d9e427892ff1344e8ad4cd0.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/854983b51259478d97b702f2e59e8bf3.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/a771becd82b04fb584471940aa361088.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/06eeb647b67149539bca7e764e9484eb.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/ab8108f5c9614f3a8618b1be35af467c.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/07a280f74b3a42b7b26773c5cef07174.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/84a614acbc0a4487adb85793d5d537d8.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/fbb00f3a39ea4bd19147af5adf3aa6a4.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/a20b91d9b7e4403e9c84147127aa3b19.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdnimg.cn/6bc156c0e21441cb8031a741ed6c2bcd.PNG?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1313,6 +905,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">1.语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%87%8E%E6%8C%87%E9%92%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 野指针是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E5%92%8C%E5%AE%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 内联函数和宏函数的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E8%BF%90%E7%AE%97%E7%AC%A6i-%E5%92%8C-i%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 运算符i++和++i的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-new%E5%92%8Cmalloc%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%90%84%E8%87%AA%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E3%80%82"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 new和malloc的区别，各自底层实现原理。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-C-%E4%B8%AD%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 C++中函数指针和指针函数的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%86%85%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">2.内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%AE%80%E8%BF%B0C-%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 简述C++的内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内存泄露及解决办法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA0%E7%9A%84%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%9C%A8bss%E8%BF%98%E6%98%AFdata"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 初始化为0的全局变量在bss还是data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-C-%E4%B8%AD%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 C++中内存对齐的使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-C-11%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">3.C++11新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-decltype"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 decltype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-C-11-%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 C++11 右值引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 新特性之模板的改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E5%88%97%E8%A1%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 列表初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-std-function-%E5%92%8C-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 std::function 和 lambda 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-C-11%E5%A4%9A%E5%B9%B6%E5%8F%91"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 C++11多并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">3.8.</span> <span class="nav-text">3.8  智能指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">4.面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81"><span class="nav-number">4.1.</span> <span class="nav-text">4.1  面向对象的三大特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-C-%E7%9A%84%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.2.</span> <span class="nav-text">4.2   C++ 的重载和重写，以及它们的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%AF%AD%E8%A8%80%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0-C-%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="nav-number">4.2.1.</span> <span class="nav-text">C 语言如何实现 C++ 语言中的重载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%AF%B4%E8%AF%B4%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9C%89%E5%87%A0%E7%A7%8D%EF%BC%8C%E5%88%86%E5%88%AB%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 说说构造函数有几种，分别什么作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 深拷贝和浅拷贝，如何实现深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%99%9A%E6%9E%90%E6%9E%84%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%99%9A%E6%9E%84%E9%80%A0"><span class="nav-number">4.5.</span> <span class="nav-text">4.5  为什么要虚析构，为什么不能虚构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E6%98%AF%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="nav-number">4.6.</span> <span class="nav-text">4.6  模板类是在什么时候实现的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E7%BB%A7%E6%89%BF%EF%BC%8C%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 什么是虚继承，解决什么问题，如何实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-C-%E4%B8%AD%E5%93%AA%E4%BA%9B%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E8%A2%AB%E5%A3%B0%E6%98%8E%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 C++ 中哪些函数不能被声明为虚函数？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-STL"><span class="nav-number">5.</span> <span class="nav-text">5.STL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number"></span> <span class="nav-text">二. 数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MySQL"><span class="nav-number">1.</span> <span class="nav-text">1 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%85%B3%E7%B3%BB%E5%9E%8B%E5%92%8C%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BD%A0%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 关系型和非关系型数据库的区别你了解多少？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-InnoDB%E4%B8%8EMyISAM%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">1.2  InnoDB与MyISAM的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 为什么使用索引？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Innodb%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E8%87%AA%E5%A2%9Eid%E4%BD%9C%E4%B8%BA%E4%B8%BB%E9%94%AE%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">1.4  Innodb为什么要用自增id作为主键？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-MyISAM%E5%92%8CInnoDB%E5%AE%9E%E7%8E%B0B%E6%A0%91%E7%B4%A2%E5%BC%95%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 MyISAM和InnoDB实现B树索引方式的区别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-MySQL%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1SQL%E7%9A%84%EF%BC%9F%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">1.6  MySQL是如何执行一条SQL的？具体步骤有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-MySQL%E7%9A%84%E5%86%85%E9%83%A8%E6%9E%84%E9%80%A0%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA%E5%93%AA%E4%B8%A4%E4%B8%AA%E9%83%A8%E5%88%86%EF%BC%9F"><span class="nav-number">1.7.</span> <span class="nav-text">1.7  MySQL的内部构造吗？一般可以分为哪两个部分？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-Drop%E3%80%81Delete%E4%B8%8ETruncate%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 Drop、Delete与Truncate的共同点和区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-MySQL%E4%BC%98%E5%8C%96%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BB%8E%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">1.9.</span> <span class="nav-text">1.9 MySQL优化了解吗？说一下从哪些方面可以做到性能优化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">1.10.</span> <span class="nav-text">1.10 数据库隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E9%87%87%E7%94%A8B-%E6%A0%91%E8%80%8C%E4%B8%8D%E6%98%AFB%E6%A0%91%E4%B8%BB%E8%A6%81%E5%8E%9F%E5%9B%A0%E6%98%AF"><span class="nav-number">1.11.</span> <span class="nav-text">1.11  数据库索引采用B+树而不是B树主要原因是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-12-%E5%90%AC%E8%AF%B4%E8%BF%87%E8%A7%86%E5%9B%BE%E5%90%97%EF%BC%9F%E9%82%A3%E6%B8%B8%E6%A0%87%E5%91%A2%EF%BC%9F"><span class="nav-number">1.12.</span> <span class="nav-text">1.12 听说过视图吗？那游标呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-13-MySQL%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E4%BA%8B%E5%8A%A1%E5%9B%9E%E6%BB%9A%E6%9C%BA%E5%88%B6ROLLBACK-%EF%BC%9F"><span class="nav-number">1.13.</span> <span class="nav-text">1.13 MySQL中为什么要有事务回滚机制ROLLBACK ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-14-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.14.</span> <span class="nav-text">1.14  数据库悲观锁和乐观锁的原理和应用场景分别有什么？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">2.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81"><span class="nav-number">3.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">4.</span> <span class="nav-text">两种锁的使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">乐观锁常见的两种实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">6.</span> <span class="nav-text">乐观锁的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-15-MySQL%E7%B4%A2%E5%BC%95%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">6.1.</span> <span class="nav-text">1.15 MySQL索引主要使用的两种数据结构是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-16-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%88%86%E5%BA%93%E5%92%8C%E5%88%86%E8%A1%A8%E5%91%A2%EF%BC%9F%E9%83%BD%E6%94%BE%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%BA%93%E6%88%96%E8%80%85%E4%B8%80%E5%BC%A0%E8%A1%A8%E4%B8%AD%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F"><span class="nav-number">6.2.</span> <span class="nav-text">1.16 数据库为什么要进行分库和分表呢？都放在一个库或者一张表中不可以吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-17-MySQL%E4%B8%AD%E6%9C%89%E5%9B%9B%E7%A7%8D%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8D%95%E8%AF%B4%E8%AF%B4%E5%90%97%EF%BC%9F"><span class="nav-number">6.3.</span> <span class="nav-text">1.17  MySQL中有四种索引类型，可以简单说说吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-18-%E5%81%87%E5%A6%82%E4%BD%A0%E6%89%80%E5%9C%A8%E7%9A%84%E5%85%AC%E5%8F%B8%E9%80%89%E6%8B%A9MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%EF%BC%8C%E4%B8%80%E5%A4%A9%E4%BA%94%E4%B8%87%E6%9D%A1%E4%BB%A5%E4%B8%8A%E7%9A%84%E5%A2%9E%E9%87%8F%EF%BC%8C%E9%A2%84%E8%AE%A1%E8%BF%90%E7%BB%B4%E4%B8%89%E5%B9%B4%EF%BC%8C%E4%BD%A0%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96%E6%89%8B%E6%AE%B5%EF%BC%9F"><span class="nav-number">6.4.</span> <span class="nav-text">1.18  假如你所在的公司选择MySQL数据库作数据存储，一天五万条以上的增量，预计运维三年，你有哪些优化手段？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-19-%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">6.5.</span> <span class="nav-text">1.19 覆盖索引是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-20-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E4%B8%BB%E9%94%AE%E3%80%81%E8%B6%85%E9%94%AE%E3%80%81%E5%80%99%E9%80%89%E9%94%AE%E3%80%81%E5%A4%96%E9%94%AE%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">6.6.</span> <span class="nav-text">1.20  数据库中的主键、超键、候选键、外键是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-21-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F%E7%B2%BE%E8%AE%B2"><span class="nav-number">6.7.</span> <span class="nav-text">1.21  数据库三大范式精讲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-22-%E4%BA%8B%E5%8A%A1%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7%EF%BC%88ACID%EF%BC%89%E5%8E%9F%E5%AD%90%E6%80%A7%E3%80%81%E4%B8%80%E8%87%B4%E6%80%A7%E3%80%81%E9%9A%94%E7%A6%BB%E6%80%A7%E3%80%81%E6%8C%81%E4%B9%85%E6%80%A7%EF%BC%9F"><span class="nav-number">6.8.</span> <span class="nav-text">1.22 事务四大特性（ACID）原子性、一致性、隔离性、持久性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-23-SQL%E4%B8%AD%E7%9A%84NOW-%E5%92%8CCURRENT-DATE-%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.9.</span> <span class="nav-text">1.23  SQL中的NOW()和CURRENT_DATE()两个函数有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Redis"><span class="nav-number">7.</span> <span class="nav-text">2 Redis</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

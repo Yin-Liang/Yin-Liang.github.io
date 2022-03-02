@@ -152,6 +152,138 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/VCS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="君落羽">
+      <meta itemprop="description" content="君落羽的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君落羽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/01/VCS/" class="post-title-link" itemprop="url">VCS的基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-01 20:37:09 / 修改时间：20:37:51" itemprop="dateCreated datePublished" datetime="2022-03-01T20:37:09+08:00">2022-03-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>VCS</strong>是在linux下面用来进行仿真看波形的工具，类似于windows下面的modelsim以及questasim等工具，以及quartus、vivado仿真的操作。</p>
+<h2 id="1-vcs的基本指令"><a href="#1-vcs的基本指令" class="headerlink" title="1.vcs的基本指令"></a>1.vcs的基本指令</h2><p><strong>vcs的常见指令后缀</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-l readme.log</code></td>
+<td>用于将编译产生的信息放在log文件内</td>
+</tr>
+<tr>
+<td><code>+v2k</code></td>
+<td>是使VCS兼容verilog 2001以前的标准</td>
+</tr>
+<tr>
+<td><code>-debug_all</code></td>
+<td>用于产生debug所需的文件</td>
+</tr>
+<tr>
+<td><code>-f  verilog_file.f   </code></td>
+<td>可将.f文件里的源码全部编译</td>
+</tr>
+<tr>
+<td><code>-R</code></td>
+<td>编译后立即运行，即编译完成后立即执行 <strong>.&#x2F;simv</strong></td>
+</tr>
+<tr>
+<td><code>-Mupdate</code></td>
+<td>源文件有修改时，只重新编译有改动的**.v**文件，节约编译时间。</td>
+</tr>
+<tr>
+<td><code>-sverilog</code></td>
+<td>打开对<strong>Systemverilog</strong>的支持，编译<strong>Systemverilog</strong>文件时使用。</td>
+</tr>
+<tr>
+<td><code>-timescale=1ns/1ns</code></td>
+<td>设置仿真精度</td>
+</tr>
+<tr>
+<td><code>-o simv_file</code></td>
+<td>编译默认产生的可执行文件为<strong>simv</strong>，可以使用 <strong>-o</strong> 更改可执行文件名。如果这里修改执行仿真时候就不是使用<strong>simv</strong>而是对应的o名字了。</td>
+</tr>
+<tr>
+<td><strong>simv的常见指令</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>指令</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>——————-</td>
+<td>——————</td>
+</tr>
+<tr>
+<td><code>./simv -l run.log</code></td>
+<td>执行的日志文件保存</td>
+</tr>
+<tr>
+<td><code>./simv -gui</code></td>
+<td>以图形化界面打开</td>
+</tr>
+</tbody></table>
+<h2 id="2-使用vcs的实例"><a href="#2-使用vcs的实例" class="headerlink" title="2.使用vcs的实例"></a>2.使用vcs的实例</h2><p>采用的是<strong>全加器的官方教程</strong>，首先介绍不使用脚本的执行过程。<br>（1）先执行<code>vcs</code>加入对应的<code>full_adder</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcs -sverilog  -debug_all   -timescale=1ns/1ps  full_adder.v  full_adder_tb.v -l com.log</span><br></pre></td></tr></table></figure>
+<p>这里先写<strong>full_adder.v</strong> 是因为<strong>tb</strong>文件需要调用它，所以把被调用的文件先写出来，这条语句会生成simv文件（如果使用了<code>-o simv_file</code>会生成对应的文件名字）。<br>（2）可以用<code>./simv</code>文件执行波形的界面，也可以采用下面指令以后台方式打开一个界面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dve  &amp;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">./simv -l run.log -gui</span><br></pre></td></tr></table></figure>
+<p>（3）如果以<code>./simv</code>执行会直接看到波形文件，如果使用<code>dve &amp;</code> 需要自行加入<code>simv</code>文件来查看波形，选中<strong>simulator-&gt;Setup</strong>,加入生成的<strong>simv</strong>文件。<br><img src="https://img-blog.csdnimg.cn/e8cc3841c31f473694ebfe378510b157.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>在下方<strong>run all</strong>，如果没有给时间刻度这里会报错。没有报错，则说明我们的功能是完全正确无误的。右键加入波形文件，按<strong>f</strong>键显示波形。<br>（4）如下的四个按键作用<br>第一个：  追踪谁驱动该信号     <strong>ctrl+d</strong><br>第二个：   追踪信号的值变换  <strong>ctrl+shift+d</strong><br>第三个：   追踪未知态<br>第四个：   追踪用于驱动谁<br><img src="https://img-blog.csdnimg.cn/adf5e968cd0b4961a7bbffea398e2b4a.png" alt="在这里插入图片描述"></p>
+<h2 id="3-makefile文件的写法"><a href="#3-makefile文件的写法" class="headerlink" title="3.makefile文件的写法"></a>3.makefile文件的写法</h2><p>vcs的脚本写法可以帮助快递进行仿真得到波形文件。<br>其中.PHONY可以指定对应哪些关键词进行make操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.PHONY:vcs sim dve clean </span><br><span class="line"></span><br><span class="line">OUTPUT = adder</span><br><span class="line"></span><br><span class="line">VCS = vcs -sverilog +v2k -timescale=1ns/1ns                             \</span><br><span class="line">          -debug_all                                                    \</span><br><span class="line">          -o <span class="variable">$&#123;OUTPUT&#125;</span>                                                  \</span><br><span class="line">          -l compile.log                                                \</span><br><span class="line">SIM = ./<span class="variable">$&#123;OUTPUT&#125;</span> -l run.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vcs:</span><br><span class="line">        <span class="variable">$&#123;VCS&#125;</span> -f verilog_file.f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sim:</span><br><span class="line">        <span class="variable">$&#123;SIM&#125;</span></span><br><span class="line"></span><br><span class="line">dve:</span><br><span class="line">		dve -vpd    vcdplus.vpd &amp;  </span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">       <span class="built_in">rm</span> -rf *.<span class="built_in">log</span>  csrc  simv*  *.key *.vpd  DVEfiles coverage *.vdb</span><br></pre></td></tr></table></figure>
+<p>这样 make vcs执行vcs语句，make sim执行simv语句，make dve打开波形文件，make clean清除一些冗余文件。<br>其中，verilog_file.f是文件的列表，可以采用下面语句生成，这样将所有以v结尾的文件名写到目标文件中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  -name  <span class="string">&quot;.*v&quot;</span>   &gt; file.list</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/ZCU106_PL_PS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -367,14 +499,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
