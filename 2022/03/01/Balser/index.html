@@ -207,14 +207,14 @@
 
       
         <h2 id="一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm"><a href="#一、下载Balser相机所需要的软件-pylon-viewer-型号为acA2440-20gm" class="headerlink" title="一、下载Balser相机所需要的软件   pylon viewer 型号为acA2440-20gm"></a>一、下载<strong>Balser</strong>相机所需要的软件   <strong>pylon viewer</strong> 型号为<strong>acA2440-20gm</strong></h2><p>有三种触发方式  硬件触发  软件触发  自由运行<br><img src="https://img-blog.csdnimg.cn/a8c7e11a003540daaf6e2762d0694e0d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_19,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h2 id="二、连接网线，主要关注触发信号这块。"><a href="#二、连接网线，主要关注触发信号这块。" class="headerlink" title="二、连接网线，主要关注触发信号这块。"></a>二、连接网线，主要关注触发信号这块。</h2><p><strong>引脚</strong> 分别对应六种颜色为    <strong>红色  绿色 白色 蓝色 棕色 黑色</strong><br><font color=Red><strong>不确定这颜色是不是一一对齐的！！！</strong></font><br><img src="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h2 id="二、连接网线，主要关注触发信号这块。"><a href="#二、连接网线，主要关注触发信号这块。" class="headerlink" title="二、连接网线，主要关注触发信号这块。"></a>二、连接网线，主要关注触发信号这块。</h2><p><strong>引脚</strong> 分别对应六种颜色为    <strong>红色  绿色 白色 蓝色 棕色 黑色</strong><br><font color="Red"><strong>不确定这颜色是不是一一对齐的！！！</strong></font><br><img src="https://img-blog.csdnimg.cn/9308bafe6cda4b318a265bad3133fbf0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <blockquote>
 <p>2外部触发接正，5为外部触发接地，外部触发0-24VDC均可，不要超过30VDC。 1和6 为相机电源12 -24VDC。</p>
 </blockquote>
 <p><img src="https://img-blog.csdnimg.cn/1e589c54c2834b05ac00918558b2a498.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1044d1be512242999b567e3417ef07d5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <p><strong>Trigger Mode</strong>是触发模式选择<br><img src="https://img-blog.csdnimg.cn/c43e5c59c11648d29ff00fa84e7889a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5b91ec0d5c1243af9ff1f3550479e1d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>可见，需要先选择对应的触发模式，再将Trigger Mode更改为ON。<br>（1）对于选择software的<strong>软件触发</strong>，Trigger Mode 为on便可以实现软件触发。<br>（2）对于选择的Line1 Line3的<strong>硬件触发</strong>， Trigger Mode 为on便可以实现硬件触发，还可以选择是上升沿触发还是下降沿触发。<br><img src="https://img-blog.csdnimg.cn/3d6c891ba13445a29075856cbf13fd2b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h2 id="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"><a href="#三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？" class="headerlink" title="三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？"></a>三、显然，硬件触发主要问题还是连线的问题，那么问题来了，怎么样让相机拍照的时候给一个脉冲信号给外面呢？</h2><h2 id="假设一"><a href="#假设一" class="headerlink" title="假设一"></a>假设一</h2><p><strong>input</strong><br>        相机的输入Line1接线上升沿: 数据线对应6根线，1和6已经接220V转12V电源的适配器，只需要接2绿线和5棕线。<br>        <img src="https://img-blog.csdnimg.cn/69e6e83f69ec4424b57f36628440a0dd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p><strong>output</strong><br>        （1）相机输出<strong>Line2接线</strong>：第四根线蓝线为相机输出，输出源有如下图几种选择，如果选择的是<strong>Exposure Active</strong>， 启用后当相机触发并曝光时会输出一个0V（对应白线），相机未触发为开路。<br>        （2）<strong>Exposure Active</strong>下，万用表一个接一个24V，一个接白线，只有15Hz，接24V和白线可以用PLC来监控&#x2F;确认相机收到Trigger信号（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zachary_hao/article/details/115653522%EF%BC%89">https://blog.csdn.net/zachary_hao/article/details/115653522）</a><br>        （3）当软件<strong>设置 Line2 为<font color=Red><strong>Frame Trigger Wait</strong></font><strong>， 相机的 output  便出现一个</strong>20Hz的曝光脉冲</strong>，但是这种情况也需要硬件触发的形式，如下图所示（<strong>帧触发等待信号</strong>）。<br>        <img src="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p><strong>output</strong><br>        （1）相机输出<strong>Line2接线</strong>：第四根线蓝线为相机输出，输出源有如下图几种选择，如果选择的是<strong>Exposure Active</strong>， 启用后当相机触发并曝光时会输出一个0V（对应白线），相机未触发为开路。<br>        （2）<strong>Exposure Active</strong>下，万用表一个接一个24V，一个接白线，只有15Hz，接24V和白线可以用PLC来监控&#x2F;确认相机收到Trigger信号（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zachary_hao/article/details/115653522%EF%BC%89">https://blog.csdn.net/zachary_hao/article/details/115653522）</a><br>        （3）当软件<strong>设置 Line2 为<font color="Red"><strong>Frame Trigger Wait</strong></font><strong>， 相机的 output  便出现一个</strong>20Hz的曝光脉冲</strong>，但是这种情况也需要硬件触发的形式，如下图所示（<strong>帧触发等待信号</strong>）。<br>        <img src="https://img-blog.csdnimg.cn/84947b8fb6eb4d1d9be7b99ccc3e2306.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <table>
 <thead>
 <tr>
@@ -236,7 +236,7 @@
 </tr>
 </tbody></table>
 <h2 id="假设二"><a href="#假设二" class="headerlink" title="假设二"></a>假设二</h2><blockquote>
-<p>考不考虑使用<font color=Red>GPIO</font>来输出<br><img src="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>考不考虑使用<font color="Red">GPIO</font>来输出<br><img src="https://img-blog.csdnimg.cn/4916255618c742feaf3f6039535d6c1b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAanVuX2x1b195dQ==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 </blockquote>
 <h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><blockquote>
 <p>可能需要考虑：当打开Blaser的软件，设置外部触发时，单片机给的脉冲信号起到了作用（别忘了把触发模式设置位:lin1，且状态选择on）；但是相机对应的程序运行时，获得图像的topic并保存，发现还是软件触发，这是因为pylon_camera软件默认的就算软件触发；所以下一步改软件里面的程序，变成外部硬件触发模式</p>
@@ -267,7 +267,7 @@
       <i class="fa fa-chevron-left"></i> DC工具的基本使用
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/03/02/C++%E8%AF%AD%E6%B3%95%E9%9D%A2%E7%BB%8F/" rel="next" title="C++面经">
+    <a href="/2022/03/02/C++/" rel="next" title="C++面经">
       C++面经 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
